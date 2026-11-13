@@ -1,0 +1,2379 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observatorio del Empleo · Boletines ENE Chile (INE N°334–N°336)</title>
+  <meta name="description" content="Observatorio del Empleo de Chile con datos reales oficiales de los Boletines Estadísticos de Empleo Trimestral del INE (N°334, N°335 y N°336)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet" />
+  <script>
+    (function () {
+      try {
+        var saved = window.localStorage.getItem('observatorio-theme');
+        if (saved === 'dark') {
+          document.documentElement.classList.add('dark');
+          document.documentElement.style.colorScheme = 'dark';
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    :root {
+      --bg-page: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --bg-soft: #F8FAFC;
+      --bg-topbar: rgba(255, 255, 255, 0.95);
+      --border: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --text-main: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --brand: #1E3A8A;
+      --brand-hover: #172554;
+      --brand-soft: #EFF6FF;
+      --brand-soft-border: #BFDBFE;
+      --crimson: #991B1B;
+      --danger-bg: #FEF2F2;
+      --danger-text: #7F1D1D;
+      --danger-border: #FECACA;
+      --ok-bg: #ECFDF5;
+      --ok-text: #065F46;
+      --ok-border: #A7F3D0;
+      --amber-bg: rgba(255, 251, 235, 0.85);
+      --amber-border: #FDE68A;
+      --amber-text: #1E293B;
+      --bar-active: #1E3A8A;
+      --bar-inactive: #93C5FD;
+      --footer-bg: #0F172A;
+    }
+
+    html.dark {
+      --bg-page: #0B1120;
+      --bg-card: #0F172A;
+      --bg-subtle: #1E293B;
+      --bg-soft: rgba(30, 41, 59, 0.55);
+      --bg-topbar: rgba(15, 23, 42, 0.95);
+      --border: #1E293B;
+      --border-strong: #334155;
+      --text-main: #F8FAFC;
+      --text-body: #CBD5E1;
+      --text-muted: #94A3B8;
+      --brand: #60A5FA;
+      --brand-hover: #3B82F6;
+      --brand-soft: rgba(30, 58, 138, 0.35);
+      --brand-soft-border: rgba(96, 165, 250, 0.45);
+      --crimson: #F87171;
+      --danger-bg: rgba(127, 29, 29, 0.5);
+      --danger-text: #FCA5A5;
+      --danger-border: rgba(248, 113, 113, 0.35);
+      --ok-bg: rgba(6, 78, 59, 0.5);
+      --ok-text: #6EE7B7;
+      --ok-border: rgba(52, 211, 153, 0.35);
+      --amber-bg: rgba(120, 53, 15, 0.25);
+      --amber-border: rgba(245, 158, 11, 0.4);
+      --amber-text: #FEF3C7;
+      --bar-active: #3B82F6;
+      --bar-inactive: #1E3A8A;
+      --footer-bg: #060A13;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .font-data {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-variant-numeric: tabular-nums;
+    }
+    .font-editorial {
+      font-family: 'Source Serif 4', Georgia, Cambria, serif;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    @media (min-width: 640px) {
+      .container { padding-left: 24px; padding-right: 24px; }
+    }
+    @media (min-width: 1024px) {
+      .container { padding-left: 32px; padding-right: 32px; }
+    }
+
+    /* TopBar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: var(--bg-topbar);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand-btn {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .brand-btn:hover { color: var(--brand); }
+
+    .desktop-nav {
+      display: none;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-btn {
+      background: none;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      padding: 4px 0;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-body);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .nav-btn:hover {
+      color: var(--text-main);
+      border-bottom-color: var(--brand);
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .theme-switch {
+      display: inline-flex;
+      padding: 2px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+    }
+    .theme-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .theme-btn.active {
+      background: var(--bg-card);
+      color: var(--text-main);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    .topbar-pdf-btn {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 0;
+      border-radius: 8px;
+      background: #1E3A8A;
+      color: #FFFFFF;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    html.dark .topbar-pdf-btn { background: #2563EB; }
+    .topbar-pdf-btn:hover { background: #172554; }
+    html.dark .topbar-pdf-btn:hover { background: #3B82F6; }
+
+    @media (min-width: 1024px) {
+      .desktop-nav { display: flex; }
+      .topbar-pdf-btn { display: inline-flex; }
+    }
+
+    /* Main spacing */
+    main.page-main {
+      padding-top: 28px;
+      padding-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+    section { scroll-margin-top: 80px; }
+
+    /* Context Header */
+    .context-header {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (min-width: 1024px) {
+      .context-header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+    .ctx-meta {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .ctx-brand { font-weight: 700; color: var(--brand); }
+    .ctx-title {
+      margin: 0;
+      font-size: clamp(26px, 3.5vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+    }
+    .ctx-desc {
+      margin: 8px 0 0;
+      max-width: 660px;
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    .ctx-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    @media (min-width: 640px) {
+      .ctx-controls { flex-direction: row; align-items: flex-end; }
+    }
+    .field-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-body);
+      margin-bottom: 6px;
+    }
+    .select-input {
+      width: 100%;
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    @media (min-width: 640px) {
+      #bulletin-select { width: 260px; }
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font: inherit;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-outline:hover { background: var(--bg-subtle); }
+
+    /* Cards & Badges */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .pad-card { padding: 20px; }
+    .overflow-card { overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
+
+    .badge-danger, .badge-ok, .badge-neutral {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .badge-danger { background: var(--danger-bg); color: var(--danger-text); border: 1px solid var(--danger-border); }
+    .badge-ok { background: var(--ok-bg); color: var(--ok-text); border: 1px solid var(--ok-border); }
+    .badge-neutral { background: var(--bg-subtle); color: var(--text-body); border: 1px solid var(--border); }
+
+    /* KPI Strip */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    @media (min-width: 640px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .kpi-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .kpi-card {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .kpi-label { font-size: 12px; font-weight: 600; color: var(--text-muted); }
+    .kpi-value-row { display: flex; align-items: baseline; gap: 10px; margin-top: 6px; }
+    .kpi-value { font-size: 28px; font-weight: 800; color: var(--text-main); }
+    .kpi-value-sm { font-size: 24px; }
+    .kpi-sub { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+    .kpi-footer {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Official Highlights */
+    .highlights-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 10px;
+    }
+    .highlights-list {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px 32px;
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--text-body);
+    }
+    @media (min-width: 768px) {
+      .highlights-list { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Map + Territorial Detail */
+    .grid-2-equal {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    @media (min-width: 1024px) {
+      .grid-2-equal { grid-template-columns: repeat(2, 1fr); }
+    }
+    .flex-col-between {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .map-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .map-head h2 { margin: 0; font-size: 16px; font-weight: 700; }
+    .map-head p { margin: 2px 0 0; font-size: 12px; color: var(--text-muted); }
+
+    .btn-chip {
+      padding: 6px 12px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--bg-subtle);
+      color: var(--brand);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-chip.active { background: #1E3A8A; color: #FFFFFF; }
+    html.dark .btn-chip.active { background: #2563EB; }
+
+    .map-canvas-box {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* Fixed 24px single-line truncated status bar eliminates vertical jump on hover */
+    .map-status-bar {
+      width: 100%;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-body);
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .map-status-text {
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .map-dir-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    #chile-map-svg {
+      width: 100%;
+      max-width: 330px;
+      height: auto;
+      max-height: 450px;
+      user-select: none;
+    }
+    .map-region-g { cursor: pointer; outline: none; }
+    .map-region-g text { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    .map-legend {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .legend-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .legend-head span:last-child { font-weight: 400; font-size: 11px; color: var(--text-muted); }
+    .legend-bar { display: flex; height: 10px; gap: 3px; border-radius: 4px; overflow: hidden; }
+    .legend-bar div { flex: 1; }
+    .legend-ticks {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* Region Detail */
+    .field-group { margin-bottom: 16px; }
+    .notice-amber {
+      margin-bottom: 16px;
+      padding: 14px;
+      border-radius: 8px;
+      background: var(--amber-bg);
+      border: 1px solid var(--amber-border);
+      color: var(--amber-text);
+      font-size: 12px;
+    }
+    .notice-row { display: flex; gap: 8px; align-items: flex-start; }
+    .notice-icon { font-size: 15px; line-height: 1.2; }
+    .notice-amber p { margin: 4px 0 8px; line-height: 1.5; }
+    .link-btn {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--brand);
+      cursor: pointer;
+    }
+    .link-btn:hover { text-decoration: underline; }
+
+    .detail-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .detail-kicker { font-size: 12px; font-weight: 600; color: var(--brand); }
+    .detail-head h3 { margin: 2px 0 0; font-size: 20px; font-weight: 800; }
+    .detail-scope { font-size: 12px; color: var(--text-muted); }
+
+    .hero-metric {
+      margin: 16px 0;
+      padding: 16px;
+      border-radius: 8px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .hero-lbl { display: block; font-size: 12px; font-weight: 500; color: var(--text-muted); }
+    .hero-val { font-size: 36px; font-weight: 800; margin-top: 2px; }
+    .hero-sub { display: block; font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+    .hero-right { text-align: left; }
+    @media (min-width: 640px) { .hero-right { text-align: right; } }
+    .hero-count { font-size: 12px; margin-top: 8px; color: var(--text-body); }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .mini-card {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-card);
+    }
+    .mini-card > span { display: block; font-size: 12px; color: var(--text-muted); }
+    .mini-val-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+    .mini-val-row strong { font-size: 18px; font-weight: 700; }
+    .delta-red { font-size: 11px; font-weight: 600; color: var(--crimson); }
+    .delta-muted { font-size: 11px; font-weight: 600; color: var(--text-muted); }
+
+    .edition-compare { padding-top: 12px; border-top: 1px solid var(--border); }
+    .compare-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .compare-head span { color: var(--text-muted); }
+    .bars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      height: 84px;
+      align-items: end;
+    }
+    .bar-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      height: 100%;
+    }
+    .bar-val { font-size: 12px; font-weight: 700; }
+    .bar-rect { width: 100%; border-radius: 4px 4px 0 0; background: var(--bar-inactive); }
+    .bar-rect.active { background: var(--bar-active); }
+    .bar-lbl { font-size: 11px; color: var(--text-muted); text-align: center; }
+
+    .card-source-foot {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .verified-tag { color: var(--ok-text); font-weight: 600; }
+
+    /* Historical Series Chart */
+    .section-head-row {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (min-width: 1024px) {
+      .section-head-row { flex-direction: row; align-items: center; justify-content: space-between; }
+    }
+    .sec-title { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.015em; }
+    .sec-sub { margin: 4px 0 0; font-size: 13.5px; color: var(--text-muted); }
+    .segmented-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .seg-group {
+      display: inline-flex;
+      padding: 4px;
+      background: var(--bg-subtle);
+      border-radius: 8px;
+    }
+    .seg-btn {
+      padding: 6px 11px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text-muted);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .seg-btn.active {
+      background: var(--bg-card);
+      color: var(--text-main);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    .readout-bar {
+      margin: 16px 0;
+      padding: 12px 16px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .readout-lbl { display: block; font-size: 11px; font-weight: 600; color: var(--text-muted); }
+    .readout-trim { font-size: 16px; font-weight: 800; }
+    .readout-ed { font-size: 12px; font-weight: 600; color: var(--brand); }
+    .readout-vals { display: flex; flex-wrap: wrap; gap: 24px; }
+    .readout-vals strong { font-size: 18px; font-weight: 800; }
+    .text-brand { color: var(--brand); }
+    .text-crimson { color: var(--crimson); }
+    .text-slate { color: var(--text-main); }
+
+    .chart-scroll { overflow-x: auto; }
+    #series-chart-svg { width: 100%; min-width: 620px; height: auto; user-select: none; }
+    .series-pt-g { cursor: pointer; outline: none; }
+
+    .chart-legend-foot {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .legend-lines { display: flex; flex-wrap: wrap; gap: 16px; }
+    .line-swatch { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+    .sw-solid-brand { width: 14px; height: 2px; background: var(--brand); display: inline-block; }
+    .sw-solid-crimson { width: 14px; height: 2px; background: var(--crimson); display: inline-block; }
+    .sw-dash-slate { width: 14px; border-top: 2px dashed var(--text-muted); display: inline-block; }
+
+    /* Breakdown Tabs */
+    .tabs-header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    @media (min-width: 768px) {
+      .tabs-header { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+    }
+    .tablist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 6px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+    .tab-btn {
+      padding: 8px 14px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text-body);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      background: var(--bg-card);
+      color: var(--brand);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    .horas-summary {
+      padding: 20px;
+      background: var(--bg-soft);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 640px) { .horas-summary { grid-template-columns: repeat(4, 1fr); } }
+    .sum-lbl { display: block; font-size: 12px; color: var(--text-muted); }
+    .sum-val { font-size: 20px; font-weight: 800; }
+    .sum-val-md { font-size: 18px; font-weight: 700; }
+    .sum-sub { font-size: 12px; color: var(--text-muted); }
+
+    .table-wrap { overflow-x: auto; }
+    table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; text-align: left; }
+    table.data-table th {
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-body);
+      background: var(--bg-soft);
+      border-bottom: 1px solid var(--border);
+    }
+    table.data-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-body);
+    }
+    table.data-table tr:last-child td { border-bottom: 0; }
+    table.data-table th.num, table.data-table td.num { text-align: right; }
+    table.data-table tr.row-total td {
+      background: var(--bg-soft);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    table.data-table tr.row-sub td:first-child { padding-left: 32px; font-size: 12.5px; color: var(--text-muted); }
+    .fw-med { font-weight: 600; color: var(--text-main) !important; }
+
+    .table-foot {
+      padding: 12px 16px;
+      background: var(--bg-soft);
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .tabs-split { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    @media (min-width: 1024px) {
+      .tabs-split { grid-template-columns: 7fr 5fr; }
+    }
+    .subcard-head {
+      padding: 16px;
+      background: var(--bg-soft);
+      border-bottom: 1px solid var(--border);
+    }
+    .subcard-head h3, .card-h3 { margin: 0; font-size: 14px; font-weight: 700; }
+    .card-h3 { margin-bottom: 12px; }
+    .sectors-list { display: flex; flex-direction: column; gap: 6px; }
+    .sector-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+    }
+    .sector-row:last-child { border-bottom: 0; }
+    .card-foot-line {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .su-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 20px; }
+    @media (min-width: 640px) { .su-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .su-grid { grid-template-columns: repeat(4, 1fr); } }
+    .su-box {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-soft);
+    }
+    .su-box > span { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); }
+    .su-box > strong { display: block; font-size: 28px; font-weight: 800; margin-top: 4px; }
+    .su-box > small { display: block; margin-top: 4px; font-size: 12px; }
+
+    .su-notes { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 768px) { .su-notes { grid-template-columns: repeat(2, 1fr); } }
+    .su-note-box {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .su-note-box h4 { margin: 0 0 6px; font-size: 14px; font-weight: 700; }
+    .su-note-box p { margin: 0; font-size: 12.5px; line-height: 1.6; color: var(--text-body); }
+
+    .sp-title { margin: 0 0 8px; font-size: 16px; font-weight: 700; }
+    .sp-desc { margin: 0 0 20px; max-width: 720px; font-size: 14px; line-height: 1.6; color: var(--text-body); }
+    .sp-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 640px) { .sp-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* Editorial Notes */
+    .notes-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 20px; }
+    @media (min-width: 1024px) { .notes-grid { grid-template-columns: repeat(3, 1fr); } }
+    .note-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .note-ref { font-weight: 600; color: var(--brand); }
+    .note-title { margin: 0 0 12px; font-size: 18px; line-height: 1.35; }
+    .note-summary { margin: 0 0 16px; font-size: 14px; line-height: 1.6; color: var(--text-body); }
+    .note-foot { padding-top: 14px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
+    .note-author-line { font-size: 12px; color: var(--text-muted); }
+    .note-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 9px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--brand-soft-border);
+      background: var(--brand-soft);
+      color: var(--brand);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Glossary */
+    .glossary-kicker { font-size: 12px; font-weight: 700; color: var(--brand); margin-bottom: 8px; }
+    .glossary-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 20px; }
+    @media (min-width: 768px) { .glossary-grid { grid-template-columns: repeat(2, 1fr); } }
+    .glossary-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      background: var(--bg-soft);
+    }
+    .glossary-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: none;
+      border: 0;
+      padding: 0;
+      text-align: left;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+    .glossary-btn:hover { color: var(--brand); }
+    .glossary-ans { margin: 10px 0 0; font-size: 13.5px; line-height: 1.6; color: var(--text-body); }
+
+    /* Footer */
+    .site-footer {
+      background: var(--footer-bg);
+      color: #E2E8F0;
+      border-top: 1px solid #1E293B;
+      margin-top: 32px;
+    }
+    .footer-inner { padding: 40px 0; }
+    .footer-top {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #1E293B;
+    }
+    @media (min-width: 768px) {
+      .footer-top { flex-direction: row; justify-content: space-between; }
+    }
+    .footer-top h2 { margin: 0 0 8px; font-size: 16px; color: #FFFFFF; }
+    .footer-top p { margin: 0; max-width: 640px; font-size: 13.5px; line-height: 1.6; color: #CBD5E1; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; font-size: 12px; flex-shrink: 0; }
+    .footer-links strong { color: #FFFFFF; font-size: 13.5px; }
+    .footer-links a { color: #93C5FD; text-decoration: none; }
+    .footer-links a:hover { color: #FFFFFF; text-decoration: underline; }
+    .footer-bottom {
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+      color: #94A3B8;
+    }
+
+    /* Modal & Toast */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(15, 23, 42, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: 12px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 28px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+    }
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+    }
+    .modal-close-x {
+      background: none;
+      border: 0;
+      font-size: 20px;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    .modal-close-x:hover { background: var(--bg-subtle); color: var(--text-main); }
+    .modal-title { margin: 18px 0 14px; font-size: 24px; line-height: 1.3; }
+    .modal-body p { font-size: 15px; line-height: 1.65; color: var(--text-body); margin: 0 0 14px; }
+    .modal-verify {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 8px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-strong);
+      font-size: 12px;
+    }
+    .modal-verify-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 10px 0; }
+    @media (min-width: 640px) { .modal-verify-grid { grid-template-columns: repeat(2, 1fr); } }
+    .modal-verify ul { margin: 0; padding-left: 18px; color: var(--text-body); line-height: 1.5; }
+    .modal-foot {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .btn-primary {
+      padding: 8px 16px;
+      border: 0;
+      border-radius: 8px;
+      background: #1E3A8A;
+      color: #FFFFFF;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    html.dark .btn-primary { background: #2563EB; }
+
+    .toast-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 60;
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <button type="button" id="brand-top" class="brand-btn">Observatorio del Empleo</button>
+
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <button type="button" class="nav-btn" data-scroll="mapa-territorial">Mapa Territorial</button>
+        <button type="button" class="nav-btn" data-scroll="serie-historica">Serie Histórica</button>
+        <button type="button" class="nav-btn" data-scroll="desglose-boletin">Desglose Nacional</button>
+        <button type="button" class="nav-btn" data-scroll="notas-editoriales">Notas</button>
+        <button type="button" class="nav-btn" data-scroll="glosario">Glosario</button>
+      </nav>
+
+      <div class="topbar-actions">
+        <div class="theme-switch" role="group" aria-label="Cambiar entre versión blanca y oscura">
+          <button type="button" id="btn-theme-light" class="theme-btn" aria-label="Versión blanca" title="Versión blanca">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+          </button>
+          <button type="button" id="btn-theme-dark" class="theme-btn" aria-label="Versión oscura" title="Versión oscura">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <button type="button" id="btn-topbar-pdf" class="topbar-pdf-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" x2="12" y1="15" y2="3"></line>
+          </svg>
+          <span id="topbar-pdf-label">PDF INE N°336</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container page-main">
+    <!-- Contexto & KPIs -->
+    <section aria-label="Contexto del boletín activo">
+      <div class="context-header">
+        <div>
+          <div class="ctx-meta">
+            <span class="ctx-brand">Observatorio del Empleo</span>
+            <span aria-hidden="true">·</span>
+            <span id="ctx-bulletin-number">Boletín ENE N°336</span>
+            <span aria-hidden="true">·</span>
+            <span id="ctx-published-date">Publicado 29 octubre 2026</span>
+          </div>
+          <h1 id="ctx-title" class="ctx-title">Empleo en Chile, julio-septiembre 2026</h1>
+          <p class="ctx-desc">
+            Visualización ciudadana construida íntegramente con los Boletines Estadísticos de Empleo Trimestral del INE (Ediciones N°334, N°335 y N°336). Sin proyecciones ni estimaciones externas.
+          </p>
+        </div>
+
+        <div class="ctx-controls">
+          <div>
+            <label for="bulletin-select" class="field-label">Edición del Boletín INE</label>
+            <select id="bulletin-select" class="select-input">
+              <option value="336">Edición n°336 · Jul–Sep 2026 (Última)</option>
+              <option value="335">Edición n°335 · Jun–Ago 2026</option>
+              <option value="334">Edición n°334 · May–Jul 2026</option>
+            </select>
+          </div>
+          <button type="button" id="btn-header-pdf" class="btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" x2="12" y1="15" y2="3"></line>
+            </svg>
+            <span id="header-pdf-label">Descargar PDF INE N°336</span>
+          </button>
+        </div>
+      </div>
+
+      <div id="kpi-grid" class="kpi-grid"></div>
+    </section>
+
+    <!-- Síntesis oficial publicada (antes del mapa) -->
+    <section aria-label="Síntesis oficial del boletín">
+      <div class="card pad-card">
+        <div id="highlights-title" class="highlights-title"></div>
+        <ul id="highlights-list" class="highlights-list"></ul>
+      </div>
+    </section>
+
+    <!-- Mapa Territorial + Ficha de Cifras -->
+    <section id="mapa-territorial" class="grid-2-equal">
+      <div class="card pad-card flex-col-between">
+        <div>
+          <div class="map-head">
+            <div>
+              <h2 id="map-title">Mapa Territorial · Total País</h2>
+              <p id="map-subtitle"></p>
+            </div>
+            <button type="button" id="btn-map-nacional" class="btn-chip active">Total País</button>
+          </div>
+
+          <div class="map-canvas-box">
+            <div class="map-status-bar">
+              <span id="map-status-text" class="map-status-text"></span>
+              <span class="map-dir-label font-data">Norte &rarr; Sur</span>
+            </div>
+            <svg id="chile-map-svg" viewBox="0 0 290 540" role="img"></svg>
+          </div>
+        </div>
+
+        <div class="map-legend">
+          <div class="legend-head">
+            <span>Escala de tasa de desocupación (%)</span>
+            <span id="map-legend-value"></span>
+          </div>
+          <div class="legend-bar">
+            <div style="background:#DBEAFE" title="Menor a 7,5%"></div>
+            <div style="background:#93C5FD" title="7,5% a 8,4%"></div>
+            <div style="background:#3B82F6" title="8,5% a 9,4%"></div>
+            <div style="background:#1D4ED8" title="9,5% a 10,4%"></div>
+            <div style="background:#1E3A8A" title="10,5% o más"></div>
+          </div>
+          <div class="legend-ticks font-data">
+            <span>&lt;7,5%</span><span>8,0%</span><span>9,0%</span><span>10,0%</span><span>&ge;10,5%</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="region-detail-container" class="card pad-card flex-col-between"></div>
+    </section>
+
+    <!-- Serie Histórica 15 Trimestres -->
+    <section id="serie-historica" class="card pad-card">
+      <div class="section-head-row">
+        <div>
+          <h2 class="sec-title">Serie Histórica Oficial: 15 Trimestres Móviles (2025–2026)</h2>
+          <p class="sec-sub">Datos observados publicados en los boletines N°334, N°335 y N°336 del INE. Haz clic en los últimos tres trimestres para cambiar la edición activa.</p>
+        </div>
+        <div class="segmented-wrap">
+          <div class="seg-group">
+            <button type="button" id="btn-ind-desocupacion" class="seg-btn active">Desocupación (%)</button>
+            <button type="button" id="btn-ind-informal" class="seg-btn">Ocupación informal (%)</button>
+          </div>
+          <div class="seg-group">
+            <button type="button" id="btn-sex-todos" class="seg-btn active">Todos</button>
+            <button type="button" id="btn-sex-total" class="seg-btn">Total País</button>
+            <button type="button" id="btn-sex-mujeres" class="seg-btn">Mujeres</button>
+            <button type="button" id="btn-sex-hombres" class="seg-btn">Hombres</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="readout-bar">
+        <div>
+          <span class="readout-lbl">Trimestre inspeccionado</span>
+          <div id="series-readout-trimester" class="readout-trim font-data"></div>
+        </div>
+        <div id="series-readout-values" class="readout-vals"></div>
+      </div>
+
+      <div class="chart-scroll">
+        <svg id="series-chart-svg" viewBox="0 0 760 250" role="img" aria-label="Serie histórica oficial de 15 trimestres móviles"></svg>
+      </div>
+
+      <div class="chart-legend-foot">
+        <div class="legend-lines">
+          <span class="line-swatch text-brand"><span class="sw-solid-brand"></span> Total País</span>
+          <span class="line-swatch text-crimson"><span class="sw-solid-crimson"></span> Mujeres</span>
+          <span class="line-swatch"><span class="sw-dash-slate"></span> Hombres</span>
+        </div>
+        <span>&#128196; <strong>Fuente:</strong> INE Chile · Cuadros Trimestres Móviles (2025–2026), Págs. 1 y 3 (Boletines N°334–336).</span>
+      </div>
+    </section>
+
+    <!-- Desglose Estadístico Completo -->
+    <section id="desglose-boletin">
+      <div class="tabs-header">
+        <div>
+          <h2 id="breakdown-title" class="sec-title">Desglose Estadístico Completo</h2>
+          <p id="breakdown-subtitle" class="sec-sub"></p>
+        </div>
+        <button type="button" id="btn-export-csv" class="btn-outline">Exportar tablas a CSV</button>
+      </div>
+
+      <div class="tablist" role="tablist" aria-label="Secciones estadísticas del boletín">
+        <button type="button" role="tab" id="tab-btn-horas" class="tab-btn active">Horas habituales y efectivas (Pág. 4)</button>
+        <button type="button" role="tab" id="tab-btn-ciso" class="tab-btn">Sectores y CISO-18 (Págs. 3 y 6)</button>
+        <button type="button" role="tab" id="tab-btn-subutilizacion" class="tab-btn">Subutilización SU1–SU3 (Pág. 4)</button>
+        <button type="button" role="tab" id="tab-btn-sp" class="tab-btn">Contraste Registros AFP / SP (Pág. 5)</button>
+      </div>
+
+      <div id="breakdown-panel"></div>
+    </section>
+
+    <!-- Notas Explicativas -->
+    <section id="notas-editoriales">
+      <h2 class="sec-title">Notas Explicativas desde la Estadística</h2>
+      <p class="sec-sub">Lecturas analíticas basadas exclusivamente en los Boletines N°334, N°335 y N°336 del INE, revisadas y editadas por Pablo Rodríguez.</p>
+      <div id="notes-grid" class="notes-grid"></div>
+    </section>
+
+    <!-- Glosario -->
+    <section id="glosario">
+      <div class="card pad-card">
+        <div class="glossary-kicker">Guía rápida de lectura estadística</div>
+        <h2 class="sec-title">Cómo leer estas cifras del INE</h2>
+        <div id="glossary-grid" class="glossary-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <div>
+          <h2>Observatorio del Empleo</h2>
+          <p>
+            Plataforma informativa basada en los boletines oficiales de la Encuesta Nacional de Empleo del Instituto Nacional de Estadísticas (INE N°334, N°335 y N°336). Edición y verificación de datos a cargo de <strong>Pablo Rodríguez</strong>.
+          </p>
+        </div>
+        <div class="footer-links">
+          <strong>Boletines Oficiales (PDF INE)</strong>
+          <a href="/assets/aistudio/ene-nacional-336_55f56d8d.pdf" download="INE_Boletin_ENE_336_jul_sep_2026.pdf">Descargar Boletín ENE N°336 (Jul–Sep 2026)</a>
+          <a href="/assets/aistudio/ene-nacional-335_573689f1.pdf" download="INE_Boletin_ENE_335_jun_ago_2026.pdf">Descargar Boletín ENE N°335 (Jun–Ago 2026)</a>
+          <a href="/assets/aistudio/ene-nacional-334_4b8aa4f9.pdf" download="INE_Boletin_ENE_334_may_jul_2026.pdf">Descargar Boletín ENE N°334 (May–Jul 2026)</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Datos públicos obtenidos de Boletines ENE N°334, N°335 y N°336 (ine.gob.cl).</span>
+        <span>Observatorio del Empleo · Pablo Rodríguez</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Nota Completa -->
+  <div id="note-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-note-title" hidden>
+    <div class="modal-box">
+      <div class="modal-head">
+        <div>
+          <span id="modal-ref" class="note-ref"></span> · <span id="modal-reviewer" class="verified-tag"></span>
+        </div>
+        <button type="button" id="modal-close-x" class="modal-close-x" aria-label="Cerrar nota">&times;</button>
+      </div>
+      <h3 id="modal-note-title" class="font-editorial modal-title"></h3>
+      <div id="modal-paragraphs" class="modal-body"></div>
+      <div class="modal-verify">
+        <strong>&#10003; Verificación de cifras y autoría</strong>
+        <div class="modal-verify-grid">
+          <div><div style="color:var(--text-muted)">Responsable editorial</div><strong id="modal-author"></strong></div>
+          <div><div style="color:var(--text-muted)">Fecha de revisión</div><strong id="modal-reviewed-at"></strong></div>
+        </div>
+        <ul id="modal-checks"></ul>
+      </div>
+      <div class="modal-foot">
+        <div><strong>Fuentes citadas:</strong> <span id="modal-sources"></span></div>
+        <button type="button" id="modal-close-btn" class="btn-primary">Cerrar nota</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast-box" class="toast-box font-data" role="status" aria-live="polite" hidden>
+    <span style="color:#34D399">&#10003;</span>
+    <span id="toast-text"></span>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const BULLETINS = {
+        '336': {
+          id: '336',
+          editionLabel: 'Edición n°336 · Jul–Sep 2026 (Última)',
+          bulletinNumber: 'Boletín ENE N°336',
+          trimesterLabel: 'julio-septiembre 2026',
+          shortLabel: 'Jul–Sep 2026',
+          publishedDate: '29 octubre 2026',
+          pdfPath: '/assets/aistudio/ene-nacional-336_55f56d8d.pdf',
+          pdfFilename: 'INE_Boletin_ENE_336_jul_sep_2026.pdf',
+          tasaParticipacion: 61.6, varParticipacionPp: -0.3,
+          tasaOcupacion: 55.5, varOcupacionPp: -1.1,
+          tasaDesocupacion: 9.8, varDesocupacionPp: 1.3,
+          tasaDesocupacionEstacional: 9.6, varEstacionalVsAnteriorPp: 0.2,
+          mujeresDesocupacion: 10.5, mujeresVarDesocupacionPp: 1.4,
+          hombresDesocupacion: 9.3, hombresVarDesocupacionPp: 1.2,
+          fuerzaTrabajo: 10282718, varFuerzaTrabajoPct: 0.3,
+          ocupadas: 9274742, varOcupadasPct: -1.1,
+          ocupadasInformales: 2451443, varOcupadasInformalesPct: -0.3,
+          desocupadas: 1007976, varDesocupadasPct: 15.3,
+          inactivas: 6416440, varInactivasPct: 1.8,
+          cesantesVarPct: 14.4, primeraVezVarPct: 24.7,
+          ausentesPctTotal: 5.3, ausentesVarPct: -4.1,
+          su1: 10.1, varSu1Pp: 1.3,
+          su2: 16.5, varSu2Pp: 1.6,
+          su3: 17.9, varSu3Pp: 1.4,
+          su3Hombres: 15.7, su3Mujeres: 20.6, su3BrechaPp: 4.9,
+          tasaPresionLaboral: 17.7,
+          tasaOcupacionInformal: 26.4, varInformalPp: 0.2,
+          tasaSectorInformal: 14.8,
+          horasEfectivasPromedio: 36.0, varHorasPromedioPct: -1.1, varVolumenHorasPct: -2.2,
+          horasHombres: 38.1, horasMujeres: 33.2,
+          horasHabituales: [
+            { tramo: 'Total ocupados', nivel: 9274742, pct: 100, varTotales: -102875, varPct: -1.1, incidenciaPp: null },
+            { tramo: '1–30 horas (tiempo parcial)', nivel: 1988211, pct: 21.4, varTotales: 55016, varPct: 2.8, incidenciaPp: 0.6 },
+            { tramo: 'TPV (voluntario)', subRow: true, nivel: 1289892, pct: 64.9, varTotales: 20008, varPct: 1.6, incidenciaPp: 1.0 },
+            { tramo: 'TPI (involuntario)', subRow: true, nivel: 663374, pct: 33.4, varTotales: 37468, varPct: 6.0, incidenciaPp: 1.9 },
+            { tramo: 'NS/NR', subRow: true, nivel: 34946, pct: 1.8, varTotales: -2460, varPct: -6.6, incidenciaPp: -0.1 },
+            { tramo: '31–44 horas', nivel: 5624837, pct: 60.6, varTotales: 285443, varPct: 5.3, incidenciaPp: 3.0 },
+            { tramo: '45 horas', nivel: 431859, pct: 4.7, varTotales: -395419, varPct: -47.8, incidenciaPp: -4.2 },
+            { tramo: '46 y más horas', nivel: 1205802, pct: 13.0, varTotales: -47945, varPct: -3.8, incidenciaPp: -0.5 },
+            { tramo: 'Sin información', nivel: 24033, pct: 0.3, varTotales: 30, varPct: 0.1, incidenciaPp: 0.0 }
+          ],
+          sectoresDestacados: [
+            { sector: 'Industria manufacturera', variacion12mPct: -8.1, direccion: 'descenso' },
+            { sector: 'Información y comunicaciones', variacion12mPct: -20.8, direccion: 'descenso' },
+            { sector: 'Actividades financieras y de seguros', variacion12mPct: -14.1, direccion: 'descenso' },
+            { sector: 'Otras actividades de servicios', variacion12mPct: -5.1, direccion: 'descenso' },
+            { sector: 'Construcción', variacion12mPct: 2.8, direccion: 'incremento' },
+            { sector: 'Enseñanza', variacion12mPct: 2.4, direccion: 'incremento' },
+            { sector: 'Actividades inmobiliarias', variacion12mPct: 19.1, direccion: 'incremento' }
+          ],
+          ciso18: [
+            { categoria: 'Asalariados privados', ocupados: 5244033, porcentaje: 56.5, variacion12mPct: -3.1 },
+            { categoria: 'Trabajadores por cuenta propia', ocupados: 1664091, porcentaje: 17.9, variacion12mPct: 0.2 },
+            { categoria: 'Asalariados públicos', ocupados: 1077480, porcentaje: 11.6, variacion12mPct: -2.7 },
+            { categoria: 'Contratistas dependientes', ocupados: 761094, porcentaje: 8.2, variacion12mPct: 12.9 },
+            { categoria: 'Empleadores', ocupados: 284883, porcentaje: 3.1, variacion12mPct: -2.8 },
+            { categoria: 'Personal de servicio doméstico', ocupados: null, porcentaje: 2.0, variacion12mPct: 2.3 },
+            { categoria: 'Familiar no remunerado', ocupados: null, porcentaje: 0.6, variacion12mPct: 13.8 }
+          ],
+          spPeriodoComparable: 'mayo-julio 2026',
+          spCotizantes: 5746702, spVarPct: -0.1,
+          eneCotizantesComparables: 5864736, eneCotizantesVarPct: -2.4,
+          highlights: [
+            'En el trimestre julio-septiembre 2026, la estimación de la tasa de desocupación nacional fue 9,8%, incrementándose 1,3 puntos porcentuales (pp.) en doce meses.',
+            'Anualmente, la estimación del total de personas ocupadas descendió 1,1%, incidida principalmente por industria manufacturera (-8,1%), información y comunicaciones (-20,8%) y actividades financieras y de seguros (-14,1%).',
+            'La población fuera de la fuerza de trabajo aumentó 1,8% en doce meses, influida por las personas inactivas habituales (1,4%).',
+            'La tasa de desocupación ajustada estacionalmente fue 9,6%, aumentando 0,2 pp. con respecto al trimestre móvil anterior.'
+          ]
+        },
+        '335': {
+          id: '335',
+          editionLabel: 'Edición n°335 · Jun–Ago 2026',
+          bulletinNumber: 'Boletín ENE N°335',
+          trimesterLabel: 'junio-agosto 2026',
+          shortLabel: 'Jun–Ago 2026',
+          publishedDate: '30 septiembre 2026',
+          pdfPath: '/assets/aistudio/ene-nacional-335_573689f1.pdf',
+          pdfFilename: 'INE_Boletin_ENE_335_jun_ago_2026.pdf',
+          tasaParticipacion: 61.5, varParticipacionPp: -0.3,
+          tasaOcupacion: 55.6, varOcupacionPp: -0.9,
+          tasaDesocupacion: 9.6, varDesocupacionPp: 1.0,
+          tasaDesocupacionEstacional: 9.4, varEstacionalVsAnteriorPp: 0.1,
+          mujeresDesocupacion: 10.3, mujeresVarDesocupacionPp: 1.0,
+          hombresDesocupacion: 9.1, hombresVarDesocupacionPp: 1.1,
+          fuerzaTrabajo: 10263145, varFuerzaTrabajoPct: 0.3,
+          ocupadas: 9273745, varOcupadasPct: -0.9,
+          ocupadasInformales: 2440977, varOcupadasInformalesPct: 0.3,
+          desocupadas: 989400, varDesocupadasPct: 13.0,
+          inactivas: 6424651, varInactivasPct: 1.8,
+          cesantesVarPct: 12.1, primeraVezVarPct: 23.2,
+          ausentesPctTotal: 5.5, ausentesVarPct: -1.2,
+          su1: 9.9, varSu1Pp: 1.1,
+          su2: 16.2, varSu2Pp: 1.4,
+          su3: 17.7, varSu3Pp: 1.2,
+          su3Hombres: 15.6, su3Mujeres: 20.2, su3BrechaPp: 4.6,
+          tasaPresionLaboral: 17.3,
+          tasaOcupacionInformal: 26.3, varInformalPp: 0.3,
+          tasaSectorInformal: 14.7,
+          horasEfectivasPromedio: 36.4, varHorasPromedioPct: -1.6, varVolumenHorasPct: -2.4,
+          horasHombres: 38.6, horasMujeres: 33.5,
+          horasHabituales: [
+            { tramo: 'Total ocupados', nivel: 9273745, pct: 100, varTotales: -81352, varPct: -0.9, incidenciaPp: null },
+            { tramo: '1–30 horas (tiempo parcial)', nivel: 1979154, pct: 21.3, varTotales: 62858, varPct: 3.3, incidenciaPp: 0.7 },
+            { tramo: 'TPV (voluntario)', subRow: true, nivel: 1289227, pct: 65.1, varTotales: 18472, varPct: 1.5, incidenciaPp: 1.0 },
+            { tramo: 'TPI (involuntario)', subRow: true, nivel: 651821, pct: 32.9, varTotales: 42261, varPct: 6.9, incidenciaPp: 2.2 },
+            { tramo: 'NS/NR', subRow: true, nivel: 38107, pct: 1.9, varTotales: 2125, varPct: 5.9, incidenciaPp: 0.1 },
+            { tramo: '31–44 horas', nivel: 5578181, pct: 60.2, varTotales: 258686, varPct: 4.9, incidenciaPp: 2.8 },
+            { tramo: '45 horas', nivel: 462644, pct: 5.0, varTotales: -386124, varPct: -45.5, incidenciaPp: -4.1 },
+            { tramo: '46 y más horas', nivel: 1229781, pct: 13.3, varTotales: -12414, varPct: -1.0, incidenciaPp: -0.1 },
+            { tramo: 'Sin información', nivel: 23985, pct: 0.3, varTotales: -4358, varPct: -15.4, incidenciaPp: 0.0 }
+          ],
+          sectoresDestacados: [
+            { sector: 'Industria manufacturera', variacion12mPct: -7.6, direccion: 'descenso' },
+            { sector: 'Información y comunicaciones', variacion12mPct: -16.8, direccion: 'descenso' },
+            { sector: 'Comercio', variacion12mPct: -1.1, direccion: 'descenso' },
+            { sector: 'Administración pública', variacion12mPct: -3.4, direccion: 'descenso' },
+            { sector: 'Servicios administrativos y de apoyo', variacion12mPct: 8.6, direccion: 'incremento' },
+            { sector: 'Construcción', variacion12mPct: 3.3, direccion: 'incremento' },
+            { sector: 'Hogares como empleadores', variacion12mPct: 7.8, direccion: 'incremento' }
+          ],
+          ciso18: [
+            { categoria: 'Asalariados privados', ocupados: 5253481, porcentaje: 56.6, variacion12mPct: -3.5 },
+            { categoria: 'Trabajadores por cuenta propia', ocupados: 1653696, porcentaje: 17.8, variacion12mPct: 1.2 },
+            { categoria: 'Asalariados públicos', ocupados: 1063638, porcentaje: 11.5, variacion12mPct: -1.7 },
+            { categoria: 'Contratistas dependientes', ocupados: 755419, porcentaje: 8.1, variacion12mPct: 11.7 },
+            { categoria: 'Empleadores', ocupados: 297743, porcentaje: 3.2, variacion12mPct: 5.9 },
+            { categoria: 'Personal de servicio doméstico', ocupados: null, porcentaje: 2.1, variacion12mPct: null },
+            { categoria: 'Familiar no remunerado', ocupados: null, porcentaje: 0.6, variacion12mPct: -4.0 }
+          ],
+          spPeriodoComparable: 'abril-junio 2026',
+          spCotizantes: 5755106, spVarPct: 0.0,
+          eneCotizantesComparables: 5896276, eneCotizantesVarPct: -2.0,
+          highlights: [
+            'En el trimestre junio-agosto 2026, la estimación de la tasa de desocupación nacional fue 9,6%, incrementándose 1,0 puntos porcentuales (pp.) en doce meses.',
+            'Anualmente, la estimación del total de personas ocupadas descendió 0,9%, incidida por industria manufacturera (-7,6%), información y comunicaciones (-16,8%) y comercio (-1,1%).',
+            'La población fuera de la fuerza de trabajo aumentó 1,8% en doce meses, influida por las personas inactivas habituales (1,6%).',
+            'La tasa de desocupación ajustada estacionalmente fue 9,4%, aumentando 0,1 pp. con respecto al trimestre móvil anterior.'
+          ]
+        },
+        '334': {
+          id: '334',
+          editionLabel: 'Edición n°334 · May–Jul 2026',
+          bulletinNumber: 'Boletín ENE N°334',
+          trimesterLabel: 'mayo-julio 2026',
+          shortLabel: 'May–Jul 2026',
+          publishedDate: '28 agosto 2026',
+          pdfPath: '/assets/aistudio/ene-nacional-334_4b8aa4f9.pdf',
+          pdfFilename: 'INE_Boletin_ENE_334_may_jul_2026.pdf',
+          tasaParticipacion: 61.7, varParticipacionPp: -0.1,
+          tasaOcupacion: 55.9, varOcupacionPp: -0.5,
+          tasaDesocupacion: 9.5, varDesocupacionPp: 0.8,
+          tasaDesocupacionEstacional: 9.3, varEstacionalVsAnteriorPp: 0.0,
+          mujeresDesocupacion: 10.3, mujeresVarDesocupacionPp: 0.6,
+          hombresDesocupacion: 8.9, hombresVarDesocupacionPp: 1.0,
+          fuerzaTrabajo: 10295061, varFuerzaTrabajoPct: 0.7,
+          ocupadas: 9314017, varOcupadasPct: -0.2,
+          ocupadasInformales: 2467172, varOcupadasInformalesPct: 1.6,
+          desocupadas: 981044, varDesocupadasPct: 10.4,
+          inactivas: 6380845, varInactivasPct: 1.1,
+          cesantesVarPct: 9.4, primeraVezVarPct: 20.9,
+          ausentesPctTotal: 5.3, ausentesVarPct: -5.4,
+          su1: 9.8, varSu1Pp: 0.9,
+          su2: 16.0, varSu2Pp: 1.4,
+          su3: 17.4, varSu3Pp: 0.7,
+          su3Hombres: 15.3, su3Mujeres: 19.9, su3BrechaPp: 4.6,
+          tasaPresionLaboral: 17.1,
+          tasaOcupacionInformal: 26.5, varInformalPp: 0.5,
+          tasaSectorInformal: 15.1,
+          horasEfectivasPromedio: 36.4, varHorasPromedioPct: -1.7, varVolumenHorasPct: -1.8,
+          horasHombres: 38.6, horasMujeres: 33.6,
+          horasHabituales: [
+            { tramo: 'Total ocupados', nivel: 9314017, pct: 100, varTotales: -16292, varPct: -0.2, incidenciaPp: null },
+            { tramo: '1–30 horas (tiempo parcial)', nivel: 1982611, pct: 21.3, varTotales: 114253, varPct: 6.1, incidenciaPp: 1.2 },
+            { tramo: 'TPV (voluntario)', subRow: true, nivel: 1298037, pct: 65.5, varTotales: 53291, varPct: 4.3, incidenciaPp: 2.9 },
+            { tramo: 'TPI (involuntario)', subRow: true, nivel: 645465, pct: 32.6, varTotales: 62028, varPct: 10.6, incidenciaPp: 3.3 },
+            { tramo: 'NS/NR', subRow: true, nivel: 39109, pct: 2.0, varTotales: -1067, varPct: -2.7, incidenciaPp: -0.1 },
+            { tramo: '31–44 horas', nivel: 5601247, pct: 60.1, varTotales: 348585, varPct: 6.6, incidenciaPp: 3.7 },
+            { tramo: '45 horas', nivel: 478956, pct: 5.1, varTotales: -448489, varPct: -48.4, incidenciaPp: -4.8 },
+            { tramo: '46 y más horas', nivel: 1226041, pct: 13.2, varTotales: -29047, varPct: -2.3, incidenciaPp: -0.3 },
+            { tramo: 'Sin información', nivel: 25162, pct: 0.3, varTotales: -1594, varPct: -6.0, incidenciaPp: 0.0 }
+          ],
+          sectoresDestacados: [
+            { sector: 'Información y comunicaciones', variacion12mPct: -14.6, direccion: 'descenso' },
+            { sector: 'Enseñanza', variacion12mPct: -3.3, direccion: 'descenso' },
+            { sector: 'Industria manufacturera', variacion12mPct: -2.7, direccion: 'descenso' },
+            { sector: 'Minería', variacion12mPct: -6.6, direccion: 'descenso' },
+            { sector: 'Actividades profesionales', variacion12mPct: 8.8, direccion: 'incremento' },
+            { sector: 'Servicios administrativos y de apoyo', variacion12mPct: 10.8, direccion: 'incremento' },
+            { sector: 'Actividades de salud', variacion12mPct: 3.0, direccion: 'incremento' }
+          ],
+          ciso18: [
+            { categoria: 'Asalariados privados', ocupados: 5287184, porcentaje: 56.8, variacion12mPct: -2.7 },
+            { categoria: 'Trabajadores por cuenta propia', ocupados: 1677235, porcentaje: 18.0, variacion12mPct: 3.7 },
+            { categoria: 'Asalariados públicos', ocupados: 1074711, porcentaje: 11.5, variacion12mPct: null },
+            { categoria: 'Contratistas dependientes', ocupados: 729366, porcentaje: 7.8, variacion12mPct: 6.7 },
+            { categoria: 'Empleadores', ocupados: 301627, porcentaje: 3.2, variacion12mPct: 8.9 },
+            { categoria: 'Personal de servicio doméstico', ocupados: null, porcentaje: 2.1, variacion12mPct: -0.2 },
+            { categoria: 'Familiar no remunerado', ocupados: null, porcentaje: 0.6, variacion12mPct: -6.7 }
+          ],
+          spPeriodoComparable: 'marzo-mayo 2026',
+          spCotizantes: 5775779, spVarPct: 0.0,
+          eneCotizantesComparables: 5936948, eneCotizantesVarPct: -1.5,
+          highlights: [
+            'En el trimestre mayo-julio 2026, la estimación de la tasa de desocupación nacional fue 9,5%, incrementándose 0,8 puntos porcentuales (pp.) en doce meses.',
+            'Anualmente, la estimación del total de personas ocupadas descendió 0,2%, incidida por información y comunicaciones (-14,6%), enseñanza (-3,3%) e industria manufacturera (-2,7%).',
+            'La población fuera de la fuerza de trabajo aumentó 1,1% en doce meses, influida únicamente por las personas inactivas habituales (1,3%).',
+            'La tasa de desocupación ajustada estacionalmente fue 9,3%, sin registrar variación con respecto al trimestre móvil anterior.'
+          ]
+        }
+      };
+
+      const REAL_TRIMESTER_SERIES = [
+        { trimester: 'may–jul 25', desocupacionTotal: 8.7, desocupacionMujeres: 9.7, desocupacionHombres: 7.9, informalTotal: 26.0, informalMujeres: 27.5, informalHombres: 24.9 },
+        { trimester: 'jun–ago 25', desocupacionTotal: 8.6, desocupacionMujeres: 9.3, desocupacionHombres: 8.0, informalTotal: 26.0, informalMujeres: 27.8, informalHombres: 24.7 },
+        { trimester: 'jul–sep 25', desocupacionTotal: 8.5, desocupacionMujeres: 9.1, desocupacionHombres: 8.1, informalTotal: 26.2, informalMujeres: 28.1, informalHombres: 24.8 },
+        { trimester: 'ago–oct 25', desocupacionTotal: 8.4, desocupacionMujeres: 8.8, desocupacionHombres: 8.2, informalTotal: 26.2, informalMujeres: 28.2, informalHombres: 24.7 },
+        { trimester: 'sep–nov 25', desocupacionTotal: 8.4, desocupacionMujeres: 8.8, desocupacionHombres: 8.1, informalTotal: 26.6, informalMujeres: 28.4, informalHombres: 25.2 },
+        { trimester: 'oct–dic 25', desocupacionTotal: 8.0, desocupacionMujeres: 8.5, desocupacionHombres: 7.7, informalTotal: 26.8, informalMujeres: 28.7, informalHombres: 25.4 },
+        { trimester: 'nov–ene 26', desocupacionTotal: 8.3, desocupacionMujeres: 8.7, desocupacionHombres: 8.0, informalTotal: 26.8, informalMujeres: 28.2, informalHombres: 25.7 },
+        { trimester: 'dic–feb 26', desocupacionTotal: 8.3, desocupacionMujeres: 9.0, desocupacionHombres: 7.8, informalTotal: 26.5, informalMujeres: 28.0, informalHombres: 25.4 },
+        { trimester: 'ene–mar 26', desocupacionTotal: 8.9, desocupacionMujeres: 10.0, desocupacionHombres: 8.1, informalTotal: 26.5, informalMujeres: 27.9, informalHombres: 25.4 },
+        { trimester: 'feb–abr 26', desocupacionTotal: 9.1, desocupacionMujeres: 10.5, desocupacionHombres: 8.0, informalTotal: 26.8, informalMujeres: 28.6, informalHombres: 25.4 },
+        { trimester: 'mar–may 26', desocupacionTotal: 9.4, desocupacionMujeres: 10.5, desocupacionHombres: 8.6, informalTotal: 27.0, informalMujeres: 28.8, informalHombres: 25.6 },
+        { trimester: 'abr–jun 26', desocupacionTotal: 9.4, desocupacionMujeres: 10.4, desocupacionHombres: 8.7, informalTotal: 27.0, informalMujeres: 28.9, informalHombres: 25.5 },
+        { trimester: 'may–jul 26', desocupacionTotal: 9.5, desocupacionMujeres: 10.3, desocupacionHombres: 8.9, informalTotal: 26.5, informalMujeres: 28.3, informalHombres: 25.1 },
+        { trimester: 'jun–ago 26', desocupacionTotal: 9.6, desocupacionMujeres: 10.3, desocupacionHombres: 9.1, informalTotal: 26.3, informalMujeres: 28.3, informalHombres: 24.8 },
+        { trimester: 'jul–sep 26', desocupacionTotal: 9.8, desocupacionMujeres: 10.5, desocupacionHombres: 9.3, informalTotal: 26.4, informalMujeres: 28.2, informalHombres: 25.1 }
+      ];
+
+      const TRIMESTER_TO_BULLETIN = {
+        'may–jul 26': '334',
+        'jun–ago 26': '335',
+        'jul–sep 26': '336'
+      };
+
+      const REGION_BASE_INFO = {
+        nacional: { code: 'CL', shortName: 'Total País', name: 'Total País (Chile)' },
+        arica: { code: 'XV', shortName: 'Arica y Par.', name: 'XV · Arica y Parinacota' },
+        tarapaca: { code: 'I', shortName: 'Tarapacá', name: 'I · Tarapacá' },
+        antofagasta: { code: 'II', shortName: 'Antofagasta', name: 'II · Antofagasta' },
+        atacama: { code: 'III', shortName: 'Atacama', name: 'III · Atacama' },
+        coquimbo: { code: 'IV', shortName: 'Coquimbo', name: 'IV · Coquimbo' },
+        valparaiso: { code: 'V', shortName: 'Valparaíso', name: 'V · Valparaíso' },
+        rm: { code: 'RM', shortName: 'Metropolitana', name: 'RM · Metropolitana de Santiago' },
+        ohiggins: { code: 'VI', shortName: "O'Higgins", name: "VI · Lib. Gral. B. O'Higgins" },
+        maule: { code: 'VII', shortName: 'Maule', name: 'VII · Maule' },
+        nuble: { code: 'XVI', shortName: 'Ñuble', name: 'XVI · Ñuble' },
+        biobio: { code: 'VIII', shortName: 'Biobío', name: 'VIII · Biobío' },
+        araucania: { code: 'IX', shortName: 'La Araucanía', name: 'IX · La Araucanía' },
+        losrios: { code: 'XIV', shortName: 'Los Ríos', name: 'XIV · Los Ríos' },
+        loslagos: { code: 'X', shortName: 'Los Lagos', name: 'X · Los Lagos' },
+        aysen: { code: 'XI', shortName: 'Aysén', name: 'XI · Aysén del Gral. C. Ibáñez' },
+        magallanes: { code: 'XII', shortName: 'Magallanes', name: 'XII · Magallanes y Antártica' }
+      };
+
+      const CHILE_REGIONS_SVG = [
+        { key: 'arica', path: 'M98,14 L130,12 L134,34 L96,38 Z', labelX: 150, labelY: 27, lineEndX: 134, side: 'right' },
+        { key: 'tarapaca', path: 'M96,40 L134,36 L132,62 L94,64 Z', labelX: 150, labelY: 53, lineEndX: 133, side: 'right' },
+        { key: 'antofagasta', path: 'M94,66 L133,64 L136,104 L91,106 Z', labelX: 150, labelY: 88, lineEndX: 135, side: 'right' },
+        { key: 'atacama', path: 'M91,108 L131,106 L124,142 L89,142 Z', labelX: 150, labelY: 127, lineEndX: 128, side: 'right' },
+        { key: 'coquimbo', path: 'M89,144 L123,144 L118,176 L87,176 Z', labelX: 150, labelY: 162, lineEndX: 121, side: 'right' },
+        { key: 'valparaiso', path: 'M85,178 L103,178 L100,206 L82,205 Z', labelX: 70, labelY: 193, lineEndX: 83, side: 'left' },
+        { key: 'rm', path: 'M105,182 L126,182 L124,209 L102,209 Z', labelX: 150, labelY: 199, lineEndX: 125, side: 'right' },
+        { key: 'ohiggins', path: 'M82,208 L119,212 L115,233 L81,232 Z', labelX: 150, labelY: 224, lineEndX: 117, side: 'right' },
+        { key: 'maule', path: 'M81,235 L114,236 L110,262 L79,260 Z', labelX: 70, labelY: 250, lineEndX: 80, side: 'left' },
+        { key: 'nuble', path: 'M79,264 L109,264 L106,282 L78,280 Z', labelX: 150, labelY: 274, lineEndX: 108, side: 'right' },
+        { key: 'biobio', path: 'M77,283 L106,284 L103,310 L74,308 Z', labelX: 70, labelY: 298, lineEndX: 76, side: 'left' },
+        { key: 'araucania', path: 'M75,311 L105,312 L101,340 L74,338 Z', labelX: 150, labelY: 327, lineEndX: 103, side: 'right' },
+        { key: 'losrios', path: 'M74,341 L100,342 L97,362 L72,360 Z', labelX: 70, labelY: 353, lineEndX: 73, side: 'left' },
+        { key: 'loslagos', path: 'M71,363 L98,364 L94,404 L67,402 Z', labelX: 150, labelY: 384, lineEndX: 96, side: 'right' },
+        { key: 'aysen', path: 'M67,406 L95,406 L91,458 L64,454 Z', labelX: 70, labelY: 432, lineEndX: 66, side: 'left' },
+        { key: 'magallanes', path: 'M64,460 L92,462 L106,522 L74,524 L58,494 Z', labelX: 150, labelY: 492, lineEndX: 98, side: 'right' }
+      ];
+
+      const REGIONAL_NO_CONSTA_REASON =
+        'No consta en los documentos adjuntos: los archivos ene-nacional-334.pdf, ene-nacional-335.pdf y ene-nacional-336.pdf (6 páginas cada uno) corresponden exclusivamente al boletín nacional del INE (Total País) y no incluyen cuadros por región. El Observatorio del Empleo no inventa ni interpola cifras regionales no publicadas en la fuente.';
+
+      const EDITORIAL_NOTES = [
+        {
+          id: 'nota-336-desocupacion',
+          title: 'La desocupación nacional subió a 9,8% en julio–septiembre 2026 con un incremento de 1,3 pp en doce meses',
+          summary: 'Según el Boletín ENE N°336 del INE, la fuerza de trabajo alcanzó 10.282.718 personas (+0,3%) mientras el total de ocupadas descendió 1,1% hasta 9.274.742, elevando la desocupación femenina a 10,5% y la masculina a 9,3%.',
+          fullText: [
+            'En el trimestre móvil julio–septiembre 2026, la tasa de desocupación nacional estimada por la Encuesta Nacional de Empleo (ENE) se ubicó en 9,8%, registrando un incremento de 1,3 puntos porcentuales (pp.) respecto al mismo período de 2025 (8,5%).',
+            'El resultado estuvo explicado por un alza de 0,3% en la fuerza de trabajo (10.282.718 personas) combinada con una contracción de 1,1% en la población ocupada (9.274.742 personas, equivalente a 102.875 ocupados menos en doce meses). Las personas desocupadas llegaron a 1.007.976 (+15,3%), incididas por quienes se encontraban cesantes (+14,4%) y quienes buscan trabajo por primera vez (+24,7%).',
+            'Por sexo, la tasa de desocupación de las mujeres alcanzó 10,5% (+1,4 pp.) y la de los hombres se situó en 9,3% (+1,2 pp.). Con ajuste estacional, el desempleo nacional fue 9,6%, subiendo 0,2 pp. frente al trimestre junio–agosto 2026.',
+            'Esta nota describe exclusivamente los registros observados en la Edición N°336 del Boletín Estadístico de Empleo Trimestral del INE y no formula proyecciones sobre períodos posteriores.'
+          ],
+          publishedAt: '29 oct 2026',
+          bulletinRef: 'Boletín Estadístico: Empleo Trimestral N°336',
+          tablesCited: ['Pág. 1 · Cuadro Trimestre Móvil jul-sep 2026', 'Pág. 1 · Serie Trimestres Móviles 2025-2026', 'Pág. 2 · Tasas por sexo y ajuste estacional'],
+          authorReviewer: 'Pablo Rodríguez',
+          authorRole: 'Editor responsable · Observatorio del Empleo',
+          reviewedAt: '29 oct 2026 · 10:02 CLT',
+          verificationChecks: [
+            'Tasas 9,8% (+1,3 pp.), 10,5% mujeres y 9,3% hombres verificadas literalmente contra páginas 1 y 2 del PDF N°336.',
+            'Niveles de población (10.282.718 fuerza de trabajo, 9.274.742 ocupadas, 1.007.976 desocupadas) cotejados con cuadro resumen.',
+            'Verificada ausencia de proyecciones o inferencias fuera de las cifras oficiales del INE.'
+          ]
+        },
+        {
+          id: 'nota-336-ciso18-sectores',
+          title: 'Industria manufacturera (-8,1%) e información y comunicaciones (-20,8%) lideran la caída anual del empleo',
+          summary: 'El descenso de 102.875 personas ocupadas en julio–septiembre 2026 se concentró en asalariados privados bajo la clasificación CISO-18 (-3,1%), mientras los contratistas dependientes crecieron 12,9% en doce meses.',
+          fullText: [
+            'De acuerdo con el desglose por actividad económica del Boletín N°336, la reducción anual de 1,1% en la población ocupada estuvo incidida principalmente por industria manufacturera (-8,1%), información y comunicaciones (-20,8%), actividades financieras y de seguros (-14,1%) y otras actividades de servicios (-5,1%).',
+            'En contraste, los principales incrementos anuales se registraron en construcción (+2,8%), enseñanza (+2,4%) y actividades inmobiliarias (+19,1%).',
+            'Bajo la nueva Clasificación Internacional de la Situación en la Ocupación (CISO-18), las personas asalariadas privadas concentraron el 56,5% del total de ocupados (5.244.033 personas, con una caída anual de 3,1%), seguidas por trabajadores por cuenta propia (1.664.091; 17,9%) y asalariados públicos (1.077.480; 11,6%). Los contratistas dependientes alcanzaron 761.094 personas (8,2%), expandiéndose 12,9% en doce meses.'
+          ],
+          publishedAt: '29 oct 2026',
+          bulletinRef: 'Boletín Estadístico: Empleo Trimestral N°336 · Pág. 3 y Anexo N°2',
+          tablesCited: ['Pág. 3 · Actividad económica e informalidad', 'Pág. 6 · Anexo N°2 Distribución CISO-18'],
+          authorReviewer: 'Pablo Rodríguez',
+          authorRole: 'Editor responsable · Observatorio del Empleo',
+          reviewedAt: '29 oct 2026 · 10:19 CLT',
+          verificationChecks: [
+            'Variaciones sectoriales (-8,1%, -20,8%, -14,1%, +2,8%, +2,4%, +19,1%) cotejadas con página 3 del PDF N°336.',
+            'Cifras CISO-18 (5.244.033 asalariados privados; 761.094 contratistas dependientes) verificadas en página 6.'
+          ]
+        },
+        {
+          id: 'nota-jornada-subutilizacion',
+          title: 'Jornada de 45 horas cayó 47,8% en doce meses mientras el tramo de 31–44 horas reunió al 60,6% de los ocupados',
+          summary: 'La comparación entre las ediciones N°334, N°335 y N°336 muestra un desplazamiento sostenido desde el tramo de 45 horas hacia 31–44 horas (5.624.837 personas en jul–sep 2026) y un alza de la tasa combinada SU3 hasta 17,9%.',
+          fullText: [
+            'Al comparar los cuadros de horas habituales trabajadas de los tres últimos boletines nacionales del INE (N°334 mayo–julio, N°335 junio–agosto y N°336 julio–septiembre 2026), el tramo de 31–44 horas pasó de 5.601.247 personas (60,1%) en mayo–julio a 5.624.837 personas (60,6%) en julio–septiembre.',
+            'Paralelamente, el tramo de 45 horas descendió 48,4% interanual en mayo–julio (478.956 ocupados), 45,5% en junio–agosto (462.644 ocupados) y 47,8% en julio–septiembre (431.859 ocupados, equivalente al 4,7% del total). El promedio de horas efectivas trabajadas bajó a 36,0 horas en julio–septiembre (38,1 en hombres y 33,2 en mujeres).',
+            'En subutilización de la fuerza de trabajo, la tasa combinada de desocupación y fuerza de trabajo potencial (SU3) avanzó desde 17,4% en mayo–julio a 17,7% en junio–agosto y 17,9% en julio–septiembre (+1,4 pp. interanual), con una brecha de género de 4,9 pp. (20,6% en mujeres frente a 15,7% en hombres).'
+          ],
+          publishedAt: '29 oct 2026',
+          bulletinRef: 'Boletines ENE N°334, N°335 y N°336 · Páginas 4',
+          tablesCited: ['N°334 Pág. 4 · Tramos de horas y SU1–SU3', 'N°335 Pág. 4 · Tramos de horas y SU1–SU3', 'N°336 Pág. 4 · Tramos de horas y SU1–SU3'],
+          authorReviewer: 'Pablo Rodríguez',
+          authorRole: 'Editor responsable · Observatorio del Empleo',
+          reviewedAt: '29 oct 2026 · 10:34 CLT',
+          verificationChecks: [
+            'Cuadro comparativo de horas habituales verificado línea a línea contra página 4 de los tres boletines.',
+            'Indicadores SU1, SU2 y SU3 y brecha de género (4,9 pp.) cotejados sin redondeos artificiales.'
+          ]
+        }
+      ];
+
+      const GLOSSARY_ITEMS = [
+        {
+          term: '¿Qué es un trimestre móvil?',
+          answer: 'Es el promedio de tres meses consecutivos (por ejemplo, julio–agosto–septiembre). El INE utiliza trimestres móviles en la Encuesta Nacional de Empleo (ENE) para suavizar variaciones estacionales de corto plazo y mejorar la precisión muestral.'
+        },
+        {
+          term: '¿Por qué las variaciones se expresan en puntos porcentuales (pp.) y no en %?',
+          answer: 'Cuando comparamos dos tasas porcentuales (por ejemplo, pasar de 8,5% en jul–sep 2025 a 9,8% en jul–sep 2026), la diferencia aritmética directa es +1,3 puntos porcentuales (pp.). Usar pp. evita confundir diferencias absolutas entre tasas con variaciones relativas.'
+        },
+        {
+          term: '¿Por qué no aparece desglose regional en estos boletines?',
+          answer: 'Los tres archivos oficiales cargados (ene-nacional-334.pdf, ene-nacional-335.pdf y ene-nacional-336.pdf, de 6 páginas cada uno) corresponden al boletín nacional del INE (Total País). En la difusión del INE, los resultados regionales se publican en boletines regionales separados.'
+        },
+        {
+          term: '¿Qué miden las tasas analíticas SU1, SU2 y SU3?',
+          answer: 'SU1 suma iniciadores disponibles a la desocupación; SU2 agrega además a quienes trabajan a tiempo parcial involuntario (TPI); y SU3 incorpora la fuerza de trabajo potencial (personas inactivas potencialmente activas disponibles para trabajar).'
+        }
+      ];
+
+      const state = {
+        bulletinId: '336',
+        selectedRegion: 'nacional',
+        hoveredRegion: null,
+        theme: 'light',
+        indicator: 'desocupacion',
+        sexFilter: 'todos',
+        hoveredSeriesIdx: REAL_TRIMESTER_SERIES.length - 1,
+        activeTab: 'horas',
+        openGlossaryIdx: 0,
+        activeNoteId: null
+      };
+
+      function getInitialTheme() {
+        try {
+          const saved = window.localStorage.getItem('observatorio-theme');
+          if (saved === 'dark' || saved === 'light') return saved;
+        } catch (e) {}
+        return 'light';
+      }
+
+      function applyTheme(theme) {
+        state.theme = theme;
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        document.documentElement.style.colorScheme = theme;
+        try {
+          window.localStorage.setItem('observatorio-theme', theme);
+        } catch (e) {}
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function formatPctCL(val) {
+        if (val === null || val === undefined) return 'No consta';
+        return val.toFixed(1).replace('.', ',') + '%';
+      }
+
+      function formatNumberCL(val) {
+        if (val === null || val === undefined) return 'No consta';
+        return new Intl.NumberFormat('es-CL').format(val);
+      }
+
+      function formatSignedPctCL(val) {
+        if (val === null || val === undefined) return 'No consta';
+        const formatted = Math.abs(val).toFixed(1).replace('.', ',');
+        if (val > 0) return '+' + formatted + '%';
+        if (val < 0) return '-' + formatted + '%';
+        return '0,0%';
+      }
+
+      function formatDeltaPpCL(val) {
+        if (val === null || val === undefined) return { text: 'No consta', tone: 'na' };
+        const formatted = Math.abs(val).toFixed(1).replace('.', ',');
+        if (val > 0) return { text: '+' + formatted + ' pp', tone: 'up' };
+        if (val < 0) return { text: '-' + formatted + ' pp', tone: 'down' };
+        return { text: '0,0 pp', tone: 'flat' };
+      }
+
+      let toastTimer = null;
+      function showToast(msg) {
+        const el = document.getElementById('toast-box');
+        const txt = document.getElementById('toast-text');
+        if (!el || !txt) return;
+        txt.textContent = msg;
+        el.hidden = false;
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          el.hidden = true;
+        }, 2800);
+      }
+
+      function downloadPdf() {
+        const b = BULLETINS[state.bulletinId];
+        const link = document.createElement('a');
+        link.href = b.pdfPath;
+        link.download = b.pdfFilename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        showToast('Descargando PDF oficial: ' + b.pdfFilename);
+      }
+
+      function exportCsv() {
+        const b = BULLETINS[state.bulletinId];
+        const rows = [
+          ['Seccion', 'Indicador', 'Valor', 'Variacion_12m', 'Fuente'],
+          ['Tasas principales', 'Tasa de participacion en la fuerza de trabajo', formatPctCL(b.tasaParticipacion), formatDeltaPpCL(b.varParticipacionPp).text, b.bulletinNumber + ' Pág. 1'],
+          ['Tasas principales', 'Tasa de ocupacion', formatPctCL(b.tasaOcupacion), formatDeltaPpCL(b.varOcupacionPp).text, b.bulletinNumber + ' Pág. 1'],
+          ['Tasas principales', 'Tasa de desocupacion nacional', formatPctCL(b.tasaDesocupacion), formatDeltaPpCL(b.varDesocupacionPp).text, b.bulletinNumber + ' Pág. 1'],
+          ['Tasas principales', 'Tasa de desocupacion ajustada estacionalmente', formatPctCL(b.tasaDesocupacionEstacional), formatDeltaPpCL(b.varEstacionalVsAnteriorPp).text + ' vs trim. ant.', b.bulletinNumber + ' Pág. 1'],
+          ['Niveles', 'Fuerza de trabajo', formatNumberCL(b.fuerzaTrabajo), formatSignedPctCL(b.varFuerzaTrabajoPct), b.bulletinNumber + ' Pág. 1'],
+          ['Niveles', 'Personas ocupadas', formatNumberCL(b.ocupadas), formatSignedPctCL(b.varOcupadasPct), b.bulletinNumber + ' Pág. 1'],
+          ['Niveles', 'Personas ocupadas informales', formatNumberCL(b.ocupadasInformales), formatSignedPctCL(b.varOcupadasInformalesPct), b.bulletinNumber + ' Pág. 1'],
+          ['Niveles', 'Personas desocupadas', formatNumberCL(b.desocupadas), formatSignedPctCL(b.varDesocupadasPct), b.bulletinNumber + ' Pág. 1'],
+          ['Niveles', 'Personas inactivas', formatNumberCL(b.inactivas), formatSignedPctCL(b.varInactivasPct), b.bulletinNumber + ' Pág. 1'],
+          ['Sexo', 'Desocupacion mujeres', formatPctCL(b.mujeresDesocupacion), formatDeltaPpCL(b.mujeresVarDesocupacionPp).text, b.bulletinNumber + ' Pág. 2'],
+          ['Sexo', 'Desocupacion hombres', formatPctCL(b.hombresDesocupacion), formatDeltaPpCL(b.hombresVarDesocupacionPp).text, b.bulletinNumber + ' Pág. 2'],
+          ['Tasas analiticas', 'SU1 (con iniciadores disponibles)', formatPctCL(b.su1), formatDeltaPpCL(b.varSu1Pp).text, b.bulletinNumber + ' Pág. 4'],
+          ['Tasas analiticas', 'SU2 (desocupacion + tiempo parcial invol.)', formatPctCL(b.su2), formatDeltaPpCL(b.varSu2Pp).text, b.bulletinNumber + ' Pág. 4'],
+          ['Tasas analiticas', 'SU3 (desocupacion + fuerza potencial)', formatPctCL(b.su3), formatDeltaPpCL(b.varSu3Pp).text, b.bulletinNumber + ' Pág. 4'],
+          ['Tasas analiticas', 'Tasa de presion laboral', formatPctCL(b.tasaPresionLaboral), 'No consta en cuadro resumen', b.bulletinNumber + ' Pág. 1'],
+          ['Informalidad', 'Tasa de ocupacion informal', formatPctCL(b.tasaOcupacionInformal), formatDeltaPpCL(b.varInformalPp).text, b.bulletinNumber + ' Pág. 3'],
+          ['Informalidad', 'Tasa de ocupacion en sector informal', formatPctCL(b.tasaSectorInformal), 'No consta en cuadro resumen', b.bulletinNumber + ' Pág. 1'],
+          ['Horas', 'Promedio horas efectivas trabajadas', b.horasEfectivasPromedio.toFixed(1).replace('.', ',') + ' h', formatSignedPctCL(b.varHorasPromedioPct), b.bulletinNumber + ' Pág. 4'],
+          ['', '', '', '', ''],
+          ['Serie Historica (15 trimestres)', 'Trimestre Movil', 'Desocupacion Total', 'Desocupacion Mujeres', 'Desocupacion Hombres / Informal Total']
+        ];
+        REAL_TRIMESTER_SERIES.forEach(function (p) {
+          rows.push(['Serie 2025-2026', p.trimester, formatPctCL(p.desocupacionTotal), formatPctCL(p.desocupacionMujeres), formatPctCL(p.desocupacionHombres) + ' / ' + formatPctCL(p.informalTotal)]);
+        });
+
+        const csv = '\uFEFF' + rows.map(function (cols) {
+          return cols.map(function (c) {
+            return '"' + String(c).replace(/"/g, '""') + '"';
+          }).join(';');
+        }).join('\n');
+
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'Observatorio_del_Empleo_INE_N' + b.id + '_' + b.shortLabel.replace(/[^a-z0-9]/gi, '_') + '.csv';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        showToast('Exportado CSV oficial: ' + b.bulletinNumber);
+      }
+
+      function renderTopbar() {
+        const b = BULLETINS[state.bulletinId];
+        document.getElementById('topbar-pdf-label').textContent = 'PDF INE N°' + b.id;
+        const btnLight = document.getElementById('btn-theme-light');
+        const btnDark = document.getElementById('btn-theme-dark');
+        btnLight.classList.toggle('active', state.theme === 'light');
+        btnLight.setAttribute('aria-pressed', String(state.theme === 'light'));
+        btnDark.classList.toggle('active', state.theme === 'dark');
+        btnDark.setAttribute('aria-pressed', String(state.theme === 'dark'));
+      }
+
+      function renderHeaderAndKpis() {
+        const b = BULLETINS[state.bulletinId];
+        document.getElementById('ctx-bulletin-number').textContent = b.bulletinNumber;
+        document.getElementById('ctx-published-date').textContent = 'Publicado ' + b.publishedDate;
+        document.getElementById('ctx-title').textContent = 'Empleo en Chile, ' + b.trimesterLabel;
+        document.getElementById('header-pdf-label').textContent = 'Descargar PDF INE N°' + b.id;
+        document.getElementById('bulletin-select').value = state.bulletinId;
+
+        const desocDelta = formatDeltaPpCL(b.varDesocupacionPp);
+        const infDelta = formatDeltaPpCL(b.varInformalPp);
+
+        document.getElementById('kpi-grid').innerHTML = [
+          '<div class="card kpi-card"><div><div class="kpi-label">Desocupación Nacional</div><div class="kpi-value-row"><span class="kpi-value font-data">' + formatPctCL(b.tasaDesocupacion) + '</span><span class="badge-danger font-data">' + desocDelta.text + '</span></div><div class="kpi-sub font-data">' + formatNumberCL(b.desocupadas) + ' desocupadas (' + formatSignedPctCL(b.varDesocupadasPct) + ')</div></div><div class="kpi-footer"><span>&#128196;</span><span>' + escapeHtml(b.bulletinNumber) + ' · Pág. 1</span></div></div>',
+          '<div class="card kpi-card"><div><div class="kpi-label">Personas Ocupadas</div><div class="kpi-value-row"><span class="kpi-value font-data">' + formatNumberCL(b.ocupadas) + '</span></div><div class="kpi-sub font-data">Var. 12m: ' + formatSignedPctCL(b.varOcupadasPct) + ' · Tasa ocup.: ' + formatPctCL(b.tasaOcupacion) + '</div></div><div class="kpi-footer"><span>&#128196;</span><span>' + escapeHtml(b.bulletinNumber) + ' · Pág. 1</span></div></div>',
+          '<div class="card kpi-card"><div><div class="kpi-label">Ocupación Informal</div><div class="kpi-value-row"><span class="kpi-value font-data">' + formatPctCL(b.tasaOcupacionInformal) + '</span><span class="badge-neutral font-data">' + infDelta.text + '</span></div><div class="kpi-sub font-data">' + formatNumberCL(b.ocupadasInformales) + ' personas (' + formatSignedPctCL(b.varOcupadasInformalesPct) + ')</div></div><div class="kpi-footer"><span>&#128196;</span><span>Sector informal: ' + formatPctCL(b.tasaSectorInformal) + ' · Pág. 1</span></div></div>',
+          '<div class="card kpi-card"><div><div class="kpi-label">Fuerza de Trabajo e Inactivas</div><div class="kpi-value-row"><span class="kpi-value kpi-value-sm font-data">' + formatNumberCL(b.fuerzaTrabajo) + '</span></div><div class="kpi-sub font-data">Participación: ' + formatPctCL(b.tasaParticipacion) + ' · Inactivas: ' + formatNumberCL(b.inactivas) + '</div></div><div class="kpi-footer"><span>&#128196;</span><span>INE Chile · Cuadro resumen Pág. 1</span></div></div>'
+        ].join('');
+      }
+
+      function renderHighlights() {
+        const b = BULLETINS[state.bulletinId];
+        document.getElementById('highlights-title').textContent = 'Síntesis oficial publicada en ' + b.bulletinNumber + ' (' + b.publishedDate + ')';
+        document.getElementById('highlights-list').innerHTML = b.highlights
+          .map(function (hl) { return '<li>' + escapeHtml(hl) + '</li>'; })
+          .join('');
+      }
+
+      function getMapStatusText() {
+        const b = BULLETINS[state.bulletinId];
+        if (state.hoveredRegion) {
+          return state.hoveredRegion === 'nacional'
+            ? 'Total País (Chile): ' + formatPctCL(b.tasaDesocupacion)
+            : REGION_BASE_INFO[state.hoveredRegion].name + ' · Boletín nacional';
+        }
+        return state.selectedRegion === 'nacional'
+          ? 'Total País: ' + formatPctCL(b.tasaDesocupacion) + ' · Haz clic en una región'
+          : REGION_BASE_INFO[state.selectedRegion].name + ' · Boletín nacional';
+      }
+
+      function updateMapHoverOnly() {
+        const statusEl = document.getElementById('map-status-text');
+        const txt = getMapStatusText();
+        statusEl.textContent = txt;
+        statusEl.title = txt;
+
+        const isDark = state.theme === 'dark';
+        const isNacional = state.selectedRegion === 'nacional';
+        const b = BULLETINS[state.bulletinId];
+        const nationalFill = isDark
+          ? (b.tasaDesocupacion >= 10.5 ? '#3B82F6' : b.tasaDesocupacion >= 9.5 ? '#2563EB' : '#60A5FA')
+          : (b.tasaDesocupacion >= 10.5 ? '#1E3A8A' : b.tasaDesocupacion >= 9.5 ? '#1D4ED8' : '#3B82F6');
+
+        CHILE_REGIONS_SVG.forEach(function (geom) {
+          const g = document.getElementById('region-g-' + geom.key);
+          if (!g) return;
+          const path = g.querySelector('path');
+          const line = g.querySelector('line');
+          const text = g.querySelector('text');
+          const isSelected = state.selectedRegion === geom.key;
+          const isHovered = state.hoveredRegion === geom.key;
+          const fill = isNacional ? nationalFill : (isSelected ? (isDark ? '#60A5FA' : '#1E3A8A') : (isDark ? '#1E40AF' : '#93C5FD'));
+          const stroke = (isSelected || isHovered) ? (isDark ? '#F8FAFC' : '#0F172A') : (isDark ? '#0F172A' : '#FFFFFF');
+          path.setAttribute('fill', fill);
+          path.setAttribute('stroke', stroke);
+          path.setAttribute('stroke-width', isSelected ? '2.2' : isHovered ? '1.8' : '1.1');
+          path.setAttribute('opacity', state.hoveredRegion && !isHovered && !isSelected ? '0.8' : '1');
+          line.setAttribute('stroke', (isSelected || isHovered) ? (isDark ? '#E2E8F0' : '#0F172A') : (isDark ? '#475569' : '#CBD5E1'));
+          line.setAttribute('stroke-width', (isSelected || isHovered) ? '1.4' : '0.9');
+          text.setAttribute('font-weight', (isSelected || isHovered) ? '700' : '500');
+          text.setAttribute('fill', (isSelected || isHovered) ? (isDark ? '#F8FAFC' : '#0F172A') : (isDark ? '#CBD5E1' : '#475569'));
+        });
+      }
+
+      function renderMap() {
+        const b = BULLETINS[state.bulletinId];
+        const isNacional = state.selectedRegion === 'nacional';
+        document.getElementById('map-title').textContent = 'Mapa Territorial · Total País (' + formatPctCL(b.tasaDesocupacion) + ')';
+        document.getElementById('map-subtitle').textContent = b.bulletinNumber + ' (' + b.shortLabel + ') · Cobertura agregada nacional';
+        const btnNac = document.getElementById('btn-map-nacional');
+        btnNac.textContent = 'Total País (' + formatPctCL(b.tasaDesocupacion) + ')';
+        btnNac.className = 'btn-chip ' + (isNacional ? 'active' : '');
+        document.getElementById('map-legend-value').textContent = 'Dato publicado: Total País (' + formatPctCL(b.tasaDesocupacion) + ')';
+
+        const svg = document.getElementById('chile-map-svg');
+        svg.setAttribute('aria-label', 'Mapa territorial de Chile para ' + b.bulletinNumber + ': tasa nacional ' + formatPctCL(b.tasaDesocupacion));
+        svg.innerHTML = CHILE_REGIONS_SVG.map(function (geom) {
+          const info = REGION_BASE_INFO[geom.key];
+          const textAnchor = geom.side === 'right' ? 'start' : 'end';
+          const x2 = geom.side === 'right' ? geom.labelX - 5 : geom.labelX + 5;
+          return '<g id="region-g-' + geom.key + '" class="map-region-g" role="button" tabindex="0" data-region="' + geom.key + '" aria-label="' + escapeHtml(info.name) + '" aria-pressed="' + (state.selectedRegion === geom.key) + '">' +
+            '<path d="' + geom.path + '"></path>' +
+            '<line x1="' + geom.lineEndX + '" y1="' + (geom.labelY - 3) + '" x2="' + x2 + '" y2="' + (geom.labelY - 3) + '"></line>' +
+            '<text x="' + geom.labelX + '" y="' + geom.labelY + '" text-anchor="' + textAnchor + '" font-size="8.8">' + escapeHtml(info.code + ' ' + info.shortName) + '</text>' +
+            '</g>';
+        }).join('');
+
+        svg.querySelectorAll('.map-region-g').forEach(function (g) {
+          const key = g.getAttribute('data-region');
+          g.addEventListener('click', function () {
+            state.selectedRegion = key;
+            renderMap();
+            renderRegionDetail();
+          });
+          g.addEventListener('mouseenter', function () {
+            state.hoveredRegion = key;
+            updateMapHoverOnly();
+          });
+          g.addEventListener('mouseleave', function () {
+            if (state.hoveredRegion === key) state.hoveredRegion = null;
+            updateMapHoverOnly();
+          });
+          g.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              state.selectedRegion = key;
+              renderMap();
+              renderRegionDetail();
+            }
+          });
+        });
+
+        updateMapHoverOnly();
+      }
+
+      function renderRegionDetail() {
+        const b = BULLETINS[state.bulletinId];
+        const isNacional = state.selectedRegion === 'nacional';
+        const info = REGION_BASE_INFO[state.selectedRegion];
+        const delta = formatDeltaPpCL(b.varDesocupacionPp);
+        const deltaClass = delta.tone === 'up' ? 'badge-danger' : (delta.tone === 'down' ? 'badge-ok' : 'badge-neutral');
+
+        const notice = isNacional ? '' :
+          '<div class="notice-amber">' +
+          '<div class="notice-row"><span class="notice-icon">&#9432;</span><div><strong>' + escapeHtml(info.name) + ': desglose regional no consta en los boletines nacionales adjuntos.</strong><p>' + escapeHtml(REGIONAL_NO_CONSTA_REASON) + '</p></div></div>' +
+          '<button type="button" id="btn-back-nacional" class="link-btn">&larr; Volver a vista Total País (Chile)</button>' +
+          '</div>';
+
+        const threeEditions = [BULLETINS['334'], BULLETINS['335'], BULLETINS['336']];
+        const barsHtml = threeEditions.map(function (ed) {
+          const isActive = ed.id === b.id;
+          const barHeight = Math.round((ed.tasaDesocupacion / 11.5) * 48);
+          return '<div class="bar-col">' +
+            '<span class="bar-val font-data">' + formatPctCL(ed.tasaDesocupacion) + '</span>' +
+            '<div class="bar-rect ' + (isActive ? 'active' : '') + '" style="height:' + barHeight + 'px"></div>' +
+            '<span class="bar-lbl">N°' + ed.id + ' · ' + ed.shortLabel + '</span>' +
+            '</div>';
+        }).join('');
+
+        const optionsHtml = Object.keys(REGION_BASE_INFO).map(function (key) {
+          const suffix = key === 'nacional' ? ' — Boletín Nacional INE' : '';
+          return '<option value="' + key + '"' + (state.selectedRegion === key ? ' selected' : '') + '>' + escapeHtml(REGION_BASE_INFO[key].name + suffix) + '</option>';
+        }).join('');
+
+        document.getElementById('region-detail-container').innerHTML =
+          '<div>' +
+          '<div class="field-group"><label for="region-selector" class="field-label">Territorio consultado (sincronizado con mapa)</label>' +
+          '<select id="region-selector" class="select-input">' + optionsHtml + '</select></div>' +
+          notice +
+          '<div class="detail-head"><div><span class="detail-kicker">' + escapeHtml(b.bulletinNumber + ' · ' + b.trimesterLabel) + '</span><h3>Total País (Chile)</h3></div><span class="detail-scope">Cobertura nacional oficial</span></div>' +
+          '<div class="hero-metric"><div><span class="hero-lbl">Tasa de desocupación nacional</span><div class="hero-val font-data">' + formatPctCL(b.tasaDesocupacion) + '</div><span class="hero-sub">Ajustada estacionalmente: <strong class="font-data">' + formatPctCL(b.tasaDesocupacionEstacional) + '</strong> (' + formatDeltaPpCL(b.varEstacionalVsAnteriorPp).text + ' vs trim. anterior)</span></div>' +
+          '<div class="hero-right"><span class="' + deltaClass + ' font-data">' + delta.text + ' en 12 meses</span><div class="hero-count">Personas desocupadas: <strong class="font-data">' + formatNumberCL(b.desocupadas) + '</strong></div><div class="hero-sub font-data">Var. 12m desocupadas: ' + formatSignedPctCL(b.varDesocupadasPct) + '</div></div></div>' +
+          '<div class="mini-grid">' +
+          '<div class="mini-card"><span>Desocupación mujeres</span><div class="mini-val-row"><strong class="font-data">' + formatPctCL(b.mujeresDesocupacion) + '</strong><span class="delta-red font-data">' + formatDeltaPpCL(b.mujeresVarDesocupacionPp).text + '</span></div></div>' +
+          '<div class="mini-card"><span>Desocupación hombres</span><div class="mini-val-row"><strong class="font-data">' + formatPctCL(b.hombresDesocupacion) + '</strong><span class="delta-red font-data">' + formatDeltaPpCL(b.hombresVarDesocupacionPp).text + '</span></div></div>' +
+          '<div class="mini-card"><span>Ocupación informal</span><div class="mini-val-row"><strong class="font-data">' + formatPctCL(b.tasaOcupacionInformal) + '</strong><span class="delta-muted font-data">' + formatDeltaPpCL(b.varInformalPp).text + '</span></div></div>' +
+          '<div class="mini-card"><span>Tasa de participación</span><div class="mini-val-row"><strong class="font-data">' + formatPctCL(b.tasaParticipacion) + '</strong><span class="delta-muted font-data">' + formatDeltaPpCL(b.varParticipacionPp).text + '</span></div></div>' +
+          '</div>' +
+          '<div class="edition-compare"><div class="compare-head"><strong>Comparación de los 3 boletines oficiales</strong><span>Solo registro histórico · Sin proyecciones</span></div><div class="bars-grid">' + barsHtml + '</div></div>' +
+          '</div>' +
+          '<div class="card-source-foot"><span>&#128196; <strong>Fuente:</strong> INE Chile, ' + escapeHtml(b.bulletinNumber) + ' (' + escapeHtml(b.publishedDate) + ')</span><span class="verified-tag">&#10003; Cifra verificada</span></div>';
+
+        document.getElementById('region-selector').addEventListener('change', function (e) {
+          state.selectedRegion = e.target.value;
+          renderMap();
+          renderRegionDetail();
+        });
+        const backBtn = document.getElementById('btn-back-nacional');
+        if (backBtn) {
+          backBtn.addEventListener('click', function () {
+            state.selectedRegion = 'nacional';
+            renderMap();
+            renderRegionDetail();
+          });
+        }
+      }
+
+      function getSeriesVal(point, series) {
+        if (state.indicator === 'desocupacion') {
+          if (series === 'total') return point.desocupacionTotal;
+          if (series === 'mujeres') return point.desocupacionMujeres;
+          return point.desocupacionHombres;
+        }
+        if (series === 'total') return point.informalTotal;
+        if (series === 'mujeres') return point.informalMujeres;
+        return point.informalHombres;
+      }
+
+      function renderSeriesChart() {
+        const isDark = state.theme === 'dark';
+        const point = REAL_TRIMESTER_SERIES[state.hoveredSeriesIdx] || REAL_TRIMESTER_SERIES[REAL_TRIMESTER_SERIES.length - 1];
+        const yMin = state.indicator === 'desocupacion' ? 7 : 24;
+        const yMax = state.indicator === 'desocupacion' ? 11.5 : 30;
+        const width = 760, height = 250, padLeft = 42, padRight = 22, padTop = 20, padBottom = 38;
+        const plotW = width - padLeft - padRight;
+        const plotH = height - padTop - padBottom;
+        const getX = function (idx) { return padLeft + (idx / (REAL_TRIMESTER_SERIES.length - 1)) * plotW; };
+        const getY = function (val) { return padTop + ((yMax - val) / (yMax - yMin)) * plotH; };
+        const buildPath = function (series) {
+          return REAL_TRIMESTER_SERIES.map(function (p, idx) {
+            return (idx === 0 ? 'M' : 'L') + getX(idx).toFixed(1) + ',' + getY(getSeriesVal(p, series)).toFixed(1);
+          }).join(' ');
+        };
+        const ticks = state.indicator === 'desocupacion' ? [7.5, 8.5, 9.5, 10.5, 11.5] : [24, 25.5, 27, 28.5, 30];
+
+        const totalColor = isDark ? '#60A5FA' : '#1E3A8A';
+        const mujeresColor = isDark ? '#F87171' : '#991B1B';
+        const hombresColor = isDark ? '#CBD5E1' : '#475569';
+        const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+        const axisColor = isDark ? '#94A3B8' : '#475569';
+        const pointStroke = isDark ? '#0F172A' : '#FFFFFF';
+
+        document.getElementById('btn-ind-desocupacion').classList.toggle('active', state.indicator === 'desocupacion');
+        document.getElementById('btn-ind-informal').classList.toggle('active', state.indicator === 'informal');
+        ['todos', 'total', 'mujeres', 'hombres'].forEach(function (f) {
+          document.getElementById('btn-sex-' + f).classList.toggle('active', state.sexFilter === f);
+        });
+
+        const matchedEd = TRIMESTER_TO_BULLETIN[point.trimester];
+        document.getElementById('series-readout-trimester').innerHTML =
+          escapeHtml(point.trimester) +
+          (matchedEd ? ' <span class="readout-ed">(Boletín N°' + matchedEd + ')</span>' : '');
+
+        let valsHtml = '';
+        if (state.sexFilter === 'todos' || state.sexFilter === 'total') {
+          valsHtml += '<div><span class="readout-lbl">Total País</span><strong class="font-data text-brand">' + formatPctCL(getSeriesVal(point, 'total')) + '</strong></div>';
+        }
+        if (state.sexFilter === 'todos' || state.sexFilter === 'mujeres') {
+          valsHtml += '<div><span class="readout-lbl">Mujeres</span><strong class="font-data text-crimson">' + formatPctCL(getSeriesVal(point, 'mujeres')) + '</strong></div>';
+        }
+        if (state.sexFilter === 'todos' || state.sexFilter === 'hombres') {
+          valsHtml += '<div><span class="readout-lbl">Hombres</span><strong class="font-data text-slate">' + formatPctCL(getSeriesVal(point, 'hombres')) + '</strong></div>';
+        }
+        document.getElementById('series-readout-values').innerHTML = valsHtml;
+
+        const gridSvg = ticks.map(function (t) {
+          const y = getY(t);
+          return '<line x1="' + padLeft + '" y1="' + y + '" x2="' + (width - padRight) + '" y2="' + y + '" stroke="' + gridColor + '" stroke-width="1"></line>' +
+            '<text x="' + (padLeft - 8) + '" y="' + (y + 4) + '" text-anchor="end" font-size="10" fill="' + axisColor + '" class="font-data">' + t.toFixed(1).replace('.', ',') + '%</text>';
+        }).join('');
+
+        const guideSvg = '<line x1="' + getX(state.hoveredSeriesIdx) + '" y1="' + padTop + '" x2="' + getX(state.hoveredSeriesIdx) + '" y2="' + (height - padBottom) + '" stroke="' + (isDark ? '#64748B' : '#94A3B8') + '" stroke-dasharray="3 3" stroke-width="1"></line>';
+
+        let pathsSvg = '';
+        if (state.sexFilter === 'todos' || state.sexFilter === 'mujeres') {
+          pathsSvg += '<path d="' + buildPath('mujeres') + '" fill="none" stroke="' + mujeresColor + '" stroke-width="2.2"></path>';
+        }
+        if (state.sexFilter === 'todos' || state.sexFilter === 'total') {
+          pathsSvg += '<path d="' + buildPath('total') + '" fill="none" stroke="' + totalColor + '" stroke-width="3"></path>';
+        }
+        if (state.sexFilter === 'todos' || state.sexFilter === 'hombres') {
+          pathsSvg += '<path d="' + buildPath('hombres') + '" fill="none" stroke="' + hombresColor + '" stroke-width="2.2" stroke-dasharray="5 3"></path>';
+        }
+
+        const pointsSvg = REAL_TRIMESTER_SERIES.map(function (p, idx) {
+          const x = getX(idx);
+          const ed = TRIMESTER_TO_BULLETIN[p.trimester];
+          const isSelectedEd = ed === state.bulletinId;
+          const isHovered = state.hoveredSeriesIdx === idx;
+          let circles = '';
+          if (state.sexFilter === 'todos' || state.sexFilter === 'mujeres') {
+            circles += '<circle cx="' + x + '" cy="' + getY(getSeriesVal(p, 'mujeres')) + '" r="' + (isHovered ? 5 : 3.2) + '" fill="' + mujeresColor + '" stroke="' + pointStroke + '" stroke-width="1.2"></circle>';
+          }
+          if (state.sexFilter === 'todos' || state.sexFilter === 'total') {
+            circles += '<circle cx="' + x + '" cy="' + getY(getSeriesVal(p, 'total')) + '" r="' + (isHovered || isSelectedEd ? 5.5 : 3.8) + '" fill="' + totalColor + '" stroke="' + pointStroke + '" stroke-width="1.5"></circle>';
+          }
+          if (state.sexFilter === 'todos' || state.sexFilter === 'hombres') {
+            circles += '<circle cx="' + x + '" cy="' + getY(getSeriesVal(p, 'hombres')) + '" r="' + (isHovered ? 5 : 3.2) + '" fill="' + hombresColor + '" stroke="' + pointStroke + '" stroke-width="1.2"></circle>';
+          }
+          const lblColor = isSelectedEd ? totalColor : (isHovered ? (isDark ? '#F8FAFC' : '#0F172A') : axisColor);
+          return '<g class="series-pt-g" data-idx="' + idx + '" tabindex="0" role="button" aria-label="' + escapeHtml(p.trimester) + ': Total ' + formatPctCL(getSeriesVal(p, 'total')) + '">' +
+            '<rect x="' + (x - plotW / 30) + '" y="' + padTop + '" width="' + (plotW / 15) + '" height="' + plotH + '" fill="transparent"></rect>' +
+            circles +
+            '<text x="' + x + '" y="' + (height - 12) + '" text-anchor="middle" font-size="8.5" font-weight="' + (isHovered || isSelectedEd ? '700' : '500') + '" fill="' + lblColor + '" class="font-data">' + escapeHtml(p.trimester) + '</text>' +
+            '</g>';
+        }).join('');
+
+        const svg = document.getElementById('series-chart-svg');
+        svg.innerHTML = gridSvg + guideSvg + pathsSvg + pointsSvg;
+
+        svg.querySelectorAll('.series-pt-g').forEach(function (g) {
+          const idx = Number(g.getAttribute('data-idx'));
+          const selectPoint = function (alsoSwitchBulletin) {
+            state.hoveredSeriesIdx = idx;
+            const p = REAL_TRIMESTER_SERIES[idx];
+            const ed = p ? TRIMESTER_TO_BULLETIN[p.trimester] : null;
+            if (alsoSwitchBulletin && ed) {
+              state.bulletinId = ed;
+              renderAll();
+            } else {
+              renderSeriesChart();
+            }
+          };
+          g.addEventListener('mouseenter', function () { selectPoint(false); });
+          g.addEventListener('focus', function () { selectPoint(false); });
+          g.addEventListener('click', function () { selectPoint(true); });
+          g.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              selectPoint(true);
+            }
+          });
+        });
+      }
+
+      function renderBreakdownTabs() {
+        const b = BULLETINS[state.bulletinId];
+        document.getElementById('breakdown-title').textContent = 'Desglose Estadístico Completo · ' + b.bulletinNumber;
+        document.getElementById('breakdown-subtitle').textContent = 'Cifras verificadas del trimestre ' + b.trimesterLabel + ' (publicado el ' + b.publishedDate + ').';
+
+        ['horas', 'ciso', 'subutilizacion', 'sp'].forEach(function (tabId) {
+          const btn = document.getElementById('tab-btn-' + tabId);
+          btn.classList.toggle('active', state.activeTab === tabId);
+          btn.setAttribute('aria-selected', String(state.activeTab === tabId));
+        });
+
+        const container = document.getElementById('breakdown-panel');
+        if (state.activeTab === 'horas') {
+          const rowsHtml = b.horasHabituales.map(function (row) {
+            const trClass = row.tramo === 'Total ocupados' ? 'row-total' : (row.subRow ? 'row-sub' : '');
+            const varTot = row.varTotales > 0 ? '+' + formatNumberCL(row.varTotales) : formatNumberCL(row.varTotales);
+            const inc = row.incidenciaPp === null ? '—' : ((row.incidenciaPp > 0 ? '+' : '') + row.incidenciaPp.toFixed(1).replace('.', ',') + ' pp');
+            return '<tr class="' + trClass + '"><td>' + escapeHtml(row.tramo) + '</td><td class="num font-data">' + formatNumberCL(row.nivel) + '</td><td class="num font-data">' + formatPctCL(row.pct) + '</td><td class="num font-data">' + varTot + '</td><td class="num font-data">' + formatSignedPctCL(row.varPct) + '</td><td class="num font-data">' + inc + '</td></tr>';
+          }).join('');
+
+          container.innerHTML =
+            '<div class="card overflow-card">' +
+            '<div class="horas-summary">' +
+            '<div><span class="sum-lbl">Promedio horas efectivas</span><strong class="sum-val font-data">' + b.horasEfectivasPromedio.toFixed(1).replace('.', ',') + ' h</strong> <span class="sum-sub font-data">(' + formatSignedPctCL(b.varHorasPromedioPct) + ' en 12m)</span></div>' +
+            '<div><span class="sum-lbl">Hombres / Mujeres (horas)</span><strong class="sum-val-md font-data">' + b.horasHombres.toFixed(1).replace('.', ',') + ' h / ' + b.horasMujeres.toFixed(1).replace('.', ',') + ' h</strong></div>' +
+            '<div><span class="sum-lbl">Volumen total horas</span><strong class="sum-val-md font-data">' + formatSignedPctCL(b.varVolumenHorasPct) + '</strong></div>' +
+            '<div><span class="sum-lbl">Ocupados ausentes</span><strong class="sum-val-md font-data">' + formatPctCL(b.ausentesPctTotal) + '</strong> <span class="sum-sub font-data">(' + formatSignedPctCL(b.ausentesVarPct) + ')</span></div>' +
+            '</div>' +
+            '<div class="table-wrap"><table class="data-table"><thead><tr><th>Tramos de horas habituales</th><th class="num">Ocupados (Nivel)</th><th class="num">% Participación</th><th class="num">Var. 12m (personas)</th><th class="num">Var. 12m (%)</th><th class="num">Incidencia (pp.)</th></tr></thead><tbody>' + rowsHtml + '</tbody></table></div>' +
+            '<div class="table-foot">&#128196; <strong>Fuente:</strong> INE Chile, ' + escapeHtml(b.bulletinNumber) + ', Pág. 4 — Personas ocupadas según tramo de horas habituales trabajadas (' + escapeHtml(b.trimesterLabel) + ').</div>' +
+            '</div>';
+        } else if (state.activeTab === 'ciso') {
+          const cisoRows = b.ciso18.map(function (item) {
+            const badgeCls = item.variacion12mPct === null ? 'badge-neutral' : (item.variacion12mPct < 0 ? 'badge-danger' : 'badge-ok');
+            return '<tr><td class="fw-med">' + escapeHtml(item.categoria) + '</td><td class="num font-data">' + formatNumberCL(item.ocupados) + '</td><td class="num font-data">' + formatPctCL(item.porcentaje) + '</td><td class="num font-data"><span class="' + badgeCls + '">' + formatSignedPctCL(item.variacion12mPct) + '</span></td></tr>';
+          }).join('');
+
+          const secRows = b.sectoresDestacados.map(function (sec) {
+            const badgeCls = sec.direccion === 'descenso' ? 'badge-danger' : 'badge-ok';
+            return '<div class="sector-row"><span>' + escapeHtml(sec.sector) + '</span><span class="' + badgeCls + ' font-data">' + formatSignedPctCL(sec.variacion12mPct) + '</span></div>';
+          }).join('');
+
+          container.innerHTML =
+            '<div class="tabs-split">' +
+            '<div class="card overflow-card"><div><div class="subcard-head"><h3>Situación en la Ocupación según CISO-18 (Anexo N°2)</h3></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Categoría CISO-18</th><th class="num">Ocupados</th><th class="num">% Total</th><th class="num">Var. 12 meses</th></tr></thead><tbody>' + cisoRows + '</tbody></table></div></div><div class="table-foot"><strong>Fuente:</strong> INE Chile, ' + escapeHtml(b.bulletinNumber) + ', Pág. 6 (Anexo N°2 CISO-18). Las celdas con &ldquo;No consta&rdquo; no aparecen desagregadas en el texto del anexo.</div></div>' +
+            '<div class="card pad-card flex-col-between"><div><h3 class="card-h3">Principales incidencias por actividad económica (Var. 12 meses)</h3><div class="sectors-list">' + secRows + '</div></div><div class="card-foot-line"><strong>Fuente:</strong> INE Chile, ' + escapeHtml(b.bulletinNumber) + ', Pág. 3 — Actividad económica.</div></div>' +
+            '</div>';
+        } else if (state.activeTab === 'subutilizacion') {
+          container.innerHTML =
+            '<div class="card pad-card">' +
+            '<div class="su-grid">' +
+            '<div class="su-box"><span>SU1 · Con iniciadores disponibles</span><strong class="font-data">' + formatPctCL(b.su1) + '</strong><small class="delta-red font-data">' + formatDeltaPpCL(b.varSu1Pp).text + ' en 12 meses</small></div>' +
+            '<div class="su-box"><span>SU2 · Desocupación + tiempo parcial invol.</span><strong class="font-data">' + formatPctCL(b.su2) + '</strong><small class="delta-red font-data">' + formatDeltaPpCL(b.varSu2Pp).text + ' en 12 meses</small></div>' +
+            '<div class="su-box"><span>SU3 · Desocupación + fuerza potencial</span><strong class="font-data">' + formatPctCL(b.su3) + '</strong><small class="delta-red font-data">' + formatDeltaPpCL(b.varSu3Pp).text + ' en 12 meses</small></div>' +
+            '<div class="su-box"><span>Tasa de presión laboral</span><strong class="font-data">' + formatPctCL(b.tasaPresionLaboral) + '</strong><small class="delta-muted">Brecha género SU3: <strong class="font-data">' + b.su3BrechaPp.toFixed(1).replace('.', ',') + ' pp</strong></small></div>' +
+            '</div>' +
+            '<div class="su-notes">' +
+            '<div class="su-note-box"><h4>Brecha por sexo en tasa combinada SU3</h4><p>En el trimestre ' + escapeHtml(b.trimesterLabel) + ', la tasa SU3 se situó en <strong class="font-data">' + formatPctCL(b.su3Mujeres) + '</strong> para las mujeres y en <strong class="font-data">' + formatPctCL(b.su3Hombres) + '</strong> para los hombres, reflejando una brecha de <strong class="font-data">' + b.su3BrechaPp.toFixed(1).replace('.', ',') + ' pp</strong>.</p></div>' +
+            '<div class="su-note-box"><h4>Composición del aumento en personas desocupadas (' + formatSignedPctCL(b.varDesocupadasPct) + ')</h4><p>El alza anual de las personas desocupadas (<strong class="font-data">' + formatNumberCL(b.desocupadas) + '</strong>) fue incidida por quienes se encontraban cesantes (<strong class="font-data">' + formatSignedPctCL(b.cesantesVarPct) + '</strong>) y quienes buscan trabajo por primera vez (<strong class="font-data">' + formatSignedPctCL(b.primeraVezVarPct) + '</strong>).</p></div>' +
+            '</div>' +
+            '<div class="card-foot-line"><strong>Fuente:</strong> INE Chile, ' + escapeHtml(b.bulletinNumber) + ', Págs. 1 y 4 — Tasas analíticas y subutilización de la fuerza de trabajo.</div>' +
+            '</div>';
+        } else {
+          container.innerHTML =
+            '<div class="card pad-card">' +
+            '<h3 class="sp-title">Anexo N°1: Contraste ENE vs. Cotizantes Dependientes AFP (Superintendencia de Pensiones)</h3>' +
+            '<p class="sp-desc">Los registros de la Superintendencia de Pensiones (SP) se publican con un rezago de dos meses respecto a la Encuesta Nacional de Empleo. Para el período comparable <strong>' + escapeHtml(b.spPeriodoComparable) + '</strong>, el dato administrativo se ubicó dentro del intervalo de confianza de la estimación ENE.</p>' +
+            '<div class="sp-grid">' +
+            '<div class="su-box"><span>Cotizantes dependientes SP (AFP) · ' + escapeHtml(b.spPeriodoComparable) + '</span><strong class="font-data">' + formatNumberCL(b.spCotizantes) + '</strong><small class="delta-muted font-data">Variación en 12 meses: <strong>' + formatSignedPctCL(b.spVarPct) + '</strong></small></div>' +
+            '<div class="su-box"><span>Estimación ENE comparable · ' + escapeHtml(b.spPeriodoComparable) + '</span><strong class="font-data">' + formatNumberCL(b.eneCotizantesComparables) + '</strong><small class="delta-muted font-data">Variación 12 meses (no est. significativa): <strong>' + formatSignedPctCL(b.eneCotizantesVarPct) + '</strong></small></div>' +
+            '</div>' +
+            '<div class="card-foot-line"><strong>Fuente:</strong> INE Chile, ' + escapeHtml(b.bulletinNumber) + ', Pág. 5 — Anexo N°1: Contraste con registros administrativos de la Superintendencia de Pensiones (SP).</div>' +
+            '</div>';
+        }
+      }
+
+      function renderNotes() {
+        const grid = document.getElementById('notes-grid');
+        grid.innerHTML = EDITORIAL_NOTES.map(function (note) {
+          return '<article class="card pad-card flex-col-between">' +
+            '<div>' +
+            '<div class="note-meta"><span class="note-ref">' + escapeHtml(note.bulletinRef) + '</span><span>·</span><span class="verified-tag">&#10003; ' + escapeHtml(note.authorReviewer) + '</span></div>' +
+            '<h3 class="font-editorial note-title">' + escapeHtml(note.title) + '</h3>' +
+            '<p class="note-summary">' + escapeHtml(note.summary) + '</p>' +
+            '</div>' +
+            '<div class="note-foot">' +
+            '<div class="note-author-line">Publicado: ' + escapeHtml(note.publishedAt) + ' · Por ' + escapeHtml(note.authorReviewer) + '</div>' +
+            '<button type="button" class="note-btn" data-note-id="' + note.id + '"><span>Leer nota completa y fuentes</span><span>&rarr;</span></button>' +
+            '</div>' +
+            '</article>';
+        }).join('');
+
+        grid.querySelectorAll('.note-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            state.activeNoteId = btn.getAttribute('data-note-id');
+            renderModal();
+          });
+        });
+      }
+
+      function renderModal() {
+        const modal = document.getElementById('note-modal');
+        if (!state.activeNoteId) {
+          modal.hidden = true;
+          return;
+        }
+        const note = EDITORIAL_NOTES.find(function (n) { return n.id === state.activeNoteId; });
+        if (!note) {
+          modal.hidden = true;
+          return;
+        }
+        document.getElementById('modal-ref').textContent = note.bulletinRef;
+        document.getElementById('modal-reviewer').textContent = 'Revisado por ' + note.authorReviewer;
+        document.getElementById('modal-note-title').textContent = note.title;
+        document.getElementById('modal-paragraphs').innerHTML = note.fullText.map(function (p) { return '<p>' + escapeHtml(p) + '</p>'; }).join('');
+        document.getElementById('modal-author').textContent = note.authorReviewer + ' (' + note.authorRole + ')';
+        document.getElementById('modal-reviewed-at').textContent = note.reviewedAt;
+        document.getElementById('modal-checks').innerHTML = note.verificationChecks.map(function (c) { return '<li>' + escapeHtml(c) + '</li>'; }).join('');
+        document.getElementById('modal-sources').textContent = note.tablesCited.join(' · ');
+        modal.hidden = false;
+      }
+
+      function renderGlossary() {
+        const grid = document.getElementById('glossary-grid');
+        grid.innerHTML = GLOSSARY_ITEMS.map(function (item, idx) {
+          const isOpen = state.openGlossaryIdx === idx;
+          return '<div class="glossary-item">' +
+            '<button type="button" class="glossary-btn" data-gidx="' + idx + '" aria-expanded="' + isOpen + '"><span>' + escapeHtml(item.term) + '</span><span>' + (isOpen ? '&#9650;' : '&#9660;') + '</span></button>' +
+            (isOpen ? '<p class="glossary-ans">' + escapeHtml(item.answer) + '</p>' : '') +
+            '</div>';
+        }).join('');
+
+        grid.querySelectorAll('.glossary-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            const idx = Number(btn.getAttribute('data-gidx'));
+            state.openGlossaryIdx = state.openGlossaryIdx === idx ? null : idx;
+            renderGlossary();
+          });
+        });
+      }
+
+      function renderAll() {
+        renderTopbar();
+        renderHeaderAndKpis();
+        renderHighlights();
+        renderMap();
+        renderRegionDetail();
+        renderSeriesChart();
+        renderBreakdownTabs();
+        renderNotes();
+        renderGlossary();
+        renderModal();
+      }
+
+      function init() {
+        applyTheme(getInitialTheme());
+
+        document.getElementById('brand-top').addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        document.querySelectorAll('[data-scroll]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            const target = document.getElementById(btn.getAttribute('data-scroll'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+          });
+        });
+        document.getElementById('btn-theme-light').addEventListener('click', function () {
+          applyTheme('light');
+          renderAll();
+        });
+        document.getElementById('btn-theme-dark').addEventListener('click', function () {
+          applyTheme('dark');
+          renderAll();
+        });
+        document.getElementById('btn-topbar-pdf').addEventListener('click', downloadPdf);
+        document.getElementById('btn-header-pdf').addEventListener('click', downloadPdf);
+        document.getElementById('btn-export-csv').addEventListener('click', exportCsv);
+
+        document.getElementById('bulletin-select').addEventListener('change', function (e) {
+          state.bulletinId = e.target.value;
+          renderAll();
+        });
+        document.getElementById('btn-map-nacional').addEventListener('click', function () {
+          state.selectedRegion = 'nacional';
+          renderMap();
+          renderRegionDetail();
+        });
+
+        document.getElementById('btn-ind-desocupacion').addEventListener('click', function () {
+          state.indicator = 'desocupacion';
+          renderSeriesChart();
+        });
+        document.getElementById('btn-ind-informal').addEventListener('click', function () {
+          state.indicator = 'informal';
+          renderSeriesChart();
+        });
+        ['todos', 'total', 'mujeres', 'hombres'].forEach(function (f) {
+          document.getElementById('btn-sex-' + f).addEventListener('click', function () {
+            state.sexFilter = f;
+            renderSeriesChart();
+          });
+        });
+
+        ['horas', 'ciso', 'subutilizacion', 'sp'].forEach(function (tabId) {
+          document.getElementById('tab-btn-' + tabId).addEventListener('click', function () {
+            state.activeTab = tabId;
+            renderBreakdownTabs();
+          });
+        });
+
+        document.getElementById('modal-close-x').addEventListener('click', function () {
+          state.activeNoteId = null;
+          renderModal();
+        });
+        document.getElementById('modal-close-btn').addEventListener('click', function () {
+          state.activeNoteId = null;
+          renderModal();
+        });
+        document.getElementById('note-modal').addEventListener('click', function (e) {
+          if (e.target.id === 'note-modal') {
+            state.activeNoteId = null;
+            renderModal();
+          }
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && state.activeNoteId) {
+            state.activeNoteId = null;
+            renderModal();
+          }
+        });
+
+        renderAll();
+      }
+
+      document.addEventListener('DOMContentLoaded', init);
+    })();
+  </script>
+</body>
+</html>
